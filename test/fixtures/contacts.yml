@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_title: MyString
+  contact_text: MyText
+  contact_email: MyText
+  user_id: 1
+
+two:
+  contact_title: MyString
+  contact_text: MyText
+  contact_email: MyText
+  user_id: 1
