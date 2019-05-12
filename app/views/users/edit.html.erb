@@ -1,2 +1,9 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Edit Profile</h1>
+
+<%= form_for (@user) do |f| %>
+ <%= f.attachment_field :user_image %>
+ <%= f.text_field :last_name %>
+ <%= f.text_field :first_name %>
+ <%= f.text_field :email %>
+ <%= f.submit 'SEND' %>
+<% end %>

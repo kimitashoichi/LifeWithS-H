@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  attachment :user_image
+
+  acts_as_paranoid
 end

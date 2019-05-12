@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_114943) do
+ActiveRecord::Schema.define(version: 2019_05_12_053337) do
 
   create_table "articles", force: :cascade do |t|
     t.text "movie_url"
@@ -85,12 +85,13 @@ ActiveRecord::Schema.define(version: 2019_05_11_114943) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.text "user_image"
+    t.string "user_image_id"
     t.string "last_name"
     t.string "first_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.boolean "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

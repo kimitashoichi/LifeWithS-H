@@ -10,5 +10,4 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     get messages_destroy_url
     assert_response :success
   end
-
 end
