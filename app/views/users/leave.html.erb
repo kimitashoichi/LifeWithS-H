@@ -1,2 +1,8 @@
-<h1>Users#leave</h1>
-<p>Find me in app/views/users/leave.html.erb</p>
+<h1>Leave</h1>
+
+<%= form_for @user, :html => { :method => :delete } do |f| %>
+ <%= f.text_field :email %>
+ <%= f.text_field :password %>
+ <%= f.submit 'SEND' %>
+<% end %>
+

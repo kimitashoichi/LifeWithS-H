@@ -1,0 +1,15 @@
+AllCops:
+
+  Exclude:
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'bin/*'
+    - 'tmp/**/*'
+    - 'db/schema.rb'
+
+  TargetRubyVersion: 2.5
+
+  DisabledByDefault: true
+
+Layout:
+  Enabled: true
