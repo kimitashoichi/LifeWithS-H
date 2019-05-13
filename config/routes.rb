@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get '/' => 'homes#top'
+  get '/' => 'homes#top', as: 'home'
   get '/about' => 'homes#about', as: 'about'
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contacts, only: [:index, :show, :create]
+  resources :contacts, only: [:index, :show, :create, :new]
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create, :destroy]
 

@@ -1,2 +1,16 @@
-<h1>Articles#hiphop</h1>
-<p>Find me in app/views/articles/hiphop.html.erb</p>
+<h1>hiphop</h1>
+
+
+<% @hiphop_articles.each do |hiphop| %>
+   <% hiphop.article_images.each do |image| %>
+     <%= attachment_image_tag image, :image, :size=>"100x100" %>
+   <% end %>
+ <p><%= hiphop.article_title %></p>
+ <p><%= hiphop.created_at.strftime('%Y/%m/%d') %></p>
+ <!-- 動画投稿ができているか試しで表示中、最終的には消す -->
+ <p><iframe width="300" height="300" src= "<%= hiphop.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="0" origin showinfo="0"></iframe></p>
+
+<!-- URLの変換ができているか試しで表示中、最終的には消す -->
+ <p><%= text_url_to_link(h(hiphop.article_url)).html_safe %></p>
+<% end %>
+

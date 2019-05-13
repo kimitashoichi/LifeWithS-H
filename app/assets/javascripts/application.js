@@ -16,3 +16,18 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require cocoon
+
+$(function () {
+
+	$(document).on("click", '.add-image-buton', function(){
+	   var form = $('#add-image').html();
+	   $('.add-image-form').append('<div class="add-image-form2"></div>')
+	   $('.add-image-form2:last').append(form);
+	});
+
+	$(document).on("click", '.delete-image-buton', function(){
+	   $('.add-image-form2').hide(300);
+	});
+
+});

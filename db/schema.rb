@@ -10,14 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_053337) do
+ActiveRecord::Schema.define(version: 2019_05_12_105153) do
+
+  create_table "article_images", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.text "movie_url"
     t.text "article_url"
     t.string "article_title"
     t.text "article_text"
-    t.text "article_image"
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
