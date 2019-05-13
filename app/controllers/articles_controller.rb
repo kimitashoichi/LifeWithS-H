@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   def edit
@@ -20,7 +22,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # binding.pry
     article = Article.new(article_params)
     article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
     article.save
