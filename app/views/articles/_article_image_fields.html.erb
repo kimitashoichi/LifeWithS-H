@@ -1,0 +1,17 @@
+
+<%= form_for @article do |f| %>
+
+	 <%= f.select :genre, [["Skate", "Skate"], ["HipHop", "HipHop"]], :prompt => "選択してください" %>
+	 <p>動画<%= f.text_field :movie_url %></p>
+	 <p>タイトル<%= f.text_field :article_title %></p>
+	 <p>記事<%= f.text_field :article_text %></p>
+	 <p>リンク<%= f.text_field :article_url %></p>
+     <p id='add-image'>image<%= f.attachment_field :article_images_images, multiple:true %></p>
+
+     <div class='add-image-buton'>画像を追加する</div>
+     <div class='delete-image-buton'>フォームを削除する</div>
+
+     <div class="add-image-form"></div>
+
+      <p><%= f.submit 'Create!' %></p>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>お問い合わせ投稿画面</h1>
+
+ <%= form_for @contact do |f| %>
+  <p>メールアドレス<%= f.text_field :contact_email %></p>
+  <p>お問い合わせタイトル<%= f.text_field :contact_title %></p>
+  <p>お問い合わせ内容<%= f.text_area :contact_text %></p>
+  <p><%= f.submit 'SEND' %></p>
+ <% end %>

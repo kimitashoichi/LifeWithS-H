@@ -1,2 +1,14 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+
+<h1>記事の詳細ページ</h1>
+<%= @article.article_title %>
+  <% if @article.movie_url.empty? %>
+	    <% @article.article_images.each do |image|  %>
+	      <%= attachment_image_tag image, :image, :size=>"100x100" %>
+	    <% end %>
+ <% else %>
+    <iframe width="300" height="300" src= "<%= @article.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="0" origin showinfo="0"></iframe>
+   <% end %>
+
+
+<%= @article.article_text %>
+<%= text_url_to_link(h(@article.article_url)).html_safe %>

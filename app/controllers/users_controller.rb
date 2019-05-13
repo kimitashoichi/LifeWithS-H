@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all.order(id: :desc)
   end
 
   def show
@@ -25,14 +26,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
- #退会できなかった場合は退会ページにリダイレクトさせ、エラーメッセージを表示す流ようにする
+  # 退会できなかった場合は退会ページにリダイレクトさせ、エラーメッセージを表示す流ようにする
   def destroy
     user = User.find(params[:id])
     if user.password == current_user.password
-    user.destroy
-    redirect_to '/'
-  else
-    render :leave
+      user.destroy
+      redirect_to '/'
+    else
+      render :leave
     end
   end
 
