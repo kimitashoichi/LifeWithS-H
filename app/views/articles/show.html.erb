@@ -14,9 +14,23 @@
 <%= text_url_to_link(h(@article.article_url)).html_safe %>
 
 
-
-
-
+   <!-- お気に入り機能の読み込みを実行 -->
 	<div id="likes_buttons_<%= @article.id %>">
 	   <%= render partial: 'favorites/favorite', locals: { article: @article } %>
 	</div>
+
+
+
+    <!-- コメント投稿、一覧表示部分 -->
+	<div>
+    <h4>コメント</h4>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    </div>
+    <% if user_signed_in? %>
+      <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
+    <% end %>
+  </div>
+
+
+

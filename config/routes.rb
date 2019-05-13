@@ -14,17 +14,15 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [:new, :show, :create, :destroy, :update] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy] do
+      resources :responses, only: [:create, :destroy]
+    end
     resource :favorites, only: [:create, :destroy]
     collection do
       get :skate
       get :hiphop
     end
   end
-
-  resources :contacts, only: [:index, :show, :create, :new]
-  resources :rooms, only: [:show, :create]
-  resources :messages, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
