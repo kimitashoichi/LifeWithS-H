@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:new, :show, :create, :destroy, :update] do
     resources :comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     collection do
       get :skate
       get :hiphop

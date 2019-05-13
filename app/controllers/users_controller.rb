@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all.order(id: :desc)
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  # 退会できなかった場合は退会ページにリダイレクトさせ、エラーメッセージを表示す流ようにする
+  #エラーメッセージを表示す流ようにする
   def destroy
     user = User.find(params[:id])
     if user.password == current_user.password
@@ -46,3 +48,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :last_name, :first_name, :user_image)
   end
 end
+
+
