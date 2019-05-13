@@ -12,3 +12,11 @@
 
 <%= @article.article_text %>
 <%= text_url_to_link(h(@article.article_url)).html_safe %>
+
+
+
+
+
+	<div id="likes_buttons_<%= @article.id %>">
+	   <%= render partial: 'favorites/favorite', locals: { article: @article } %>
+	</div>

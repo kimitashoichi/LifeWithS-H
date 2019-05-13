@@ -8,4 +8,5 @@
 <p><%= user.last_name %><% user.first_name %></p>
 <p><%= user.email %></p>
 <!-- DM機能を作成したらDMを開始するリンク作成する -->
+<p><%= link_to 'Detail', user_path(user.id) %></p>
 <% end %>
