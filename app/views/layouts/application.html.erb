@@ -10,6 +10,39 @@
   </head>
 
   <body>
+    <header>
+         <nav>
+              <ul class="nav-list">
+            <% if user_signed_in? %>
+                <li class="nav-list-item"><i class="fas fa-fire" style="color: white;" ></i>
+                  <%= link_to "Skate",skate_articles_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-music" style="color: white;" ></i>
+                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i>
+                  <%= link_to "my page", user_path(current_user.id), :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-home" style="color: white;" ></i>
+                  <%= link_to "Log Out", destroy_user_session_path, :style=>"color:white;" %></li>
+
+            <% else %>
+
+                <li class="nav-list-item"><i class="fas fa-fire" style="color: white;" ></i>
+                  <%= link_to "Skate",skate_articles_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-music" style="color: white;" ></i>
+                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-dungeon" style="color: white;" ></i>
+                  <%= link_to "Log In", new_user_session_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i>
+                  <%= link_to "Sign Up", new_user_registration_path, :style=>"color:white;" %></li>
+            <% end %>
+               </ul>
+         </nav>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <p class="contact-text"><%= link_to "Contact Us", new_contact_path, :style=>"color:white;", class: "btn btn-warning" %></p>
+      <p class="foter-text">CopyRight 2019 KIMITA All right reserved.</p>
+    </footer>
   </body>
 </html>

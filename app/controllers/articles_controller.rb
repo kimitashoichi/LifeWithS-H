@@ -9,6 +9,27 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @comments = @article.comments
     @reply = Reply.new
+
+   if user_signed_in?
+
+    new_history = BrowsingHistory.new
+    new_history.user_id = current_user.id
+    new_history.article_id = params[:id]
+
+    if current_user.browsing_histories.exists?(article_id: "#{params[:id]}")
+      old_history = current_user.browsing_histories.find_by(article_id: "#{params[:id]}")
+      old_history.destroy
+    end
+
+    new_history.save
+
+    histories_stock_limit = 10
+    histories = current_user.browsing_histories.all
+    if histories.count > histories_stock_limit
+      histories[0].destroy
+    end
+
+    end
   end
 
   def edit
