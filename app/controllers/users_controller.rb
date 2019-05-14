@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order(id: :desc)
+    @users = User.search(params[:search])
   end
 
   def show

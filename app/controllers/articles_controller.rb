@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def skate
@@ -35,9 +36,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    article = Article.find(params[:id])
+    article.destroy
+    redirect_to skate_articles_path
   end
 
   def update
+    article = Article.find(params[:id])
+    article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
+    article.update(article_params)
+
+    if article.genre == 'Skate'
+      redirect_to skate_articles_path
+    else
+      redirect_to hiphop_articles_path
+    end
   end
 
   private
