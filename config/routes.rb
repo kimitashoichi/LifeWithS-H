@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     member do
-      get :favotites
+      get :favorites
       get :history
       get :leave
       get :talk
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:new, :show, :create, :destroy, :update] do
     resources :comments, only: [:create, :destroy] do
-      resources :responses, only: [:create, :destroy]
+      resource :responses, only: [:create, :destroy]
     end
     resource :favorites, only: [:create, :destroy]
     collection do

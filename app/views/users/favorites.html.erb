@@ -1,2 +1,11 @@
-<h1>Users#favorites</h1>
-<p>Find me in app/views/users/favorites.html.erb</p>
+<h1>お気に入り一覧</h1>
+
+ <% @favorites.each do |f| %>
+    <%= link_to article_path(f.article.id) do %>
+	  <%= f.article.article_title %>
+	<% end %>
+	    <% f.article.article_images.each do |image| %>
+	     <%= attachment_image_tag image, :image, :size => "100x100" %>
+	    <% end %>
+	    <%= f.article.created_at.strftime('%Y/%m/%d') %>
+ <% end %>
