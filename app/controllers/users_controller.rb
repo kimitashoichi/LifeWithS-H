@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def histroy
+    @user = User.find(params[:id])
+    @browsing_histories = @user.browsing_histories
   end
 
   def leave
@@ -38,9 +40,6 @@ class UsersController < ApplicationController
     else
       render :leave
     end
-  end
-
-  def talk
   end
 
   private

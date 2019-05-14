@@ -1,2 +1,11 @@
-<h1>Users#histroy</h1>
-<p>Find me in app/views/users/histroy.html.erb</p>
+<h1>閲覧履歴</h1>
+
+<% @browsing_histories.each do |history| %>
+  <%= link_to article_path(history.article.id) do %>
+	  <%= history.article.article_title %>
+	<% end %>
+	    <% history.article.article_images.each do |image| %>
+	     <%= attachment_image_tag image, :image, :size => "100x100" %>
+	    <% end %>
+	    <%= history.article.created_at.strftime('%Y/%m/%d') %>
+<% end %>

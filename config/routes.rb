@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     member do
       get :favorites
-      get :history
+      get :histroy
       get :leave
-      get :talk
     end
   end
 
@@ -23,6 +22,8 @@ Rails.application.routes.draw do
       get :hiphop
     end
   end
+
+  resources :contacts, only: [:index, :show, :create, :new]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
