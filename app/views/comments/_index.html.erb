@@ -5,5 +5,21 @@
     <% if comment.user == current_user %>
       <p><%= link_to 'コメントを削除する', article_comment_path(comment.article_id, comment.id), method: :delete, remote: true %></p>
     <% end %>
+
+    <!-- 返信コメントの一覧表示 -->
+     <% comment.replies.each do |r| %>
+     <p><%= link_to "#{r.user.last_name}さん", user_path(r.user.id) %></p>
+       <p>返信：<%= r.reply_text %></p>
+	     <% if comment.user == current_user %>
+	       <p><%= link_to '返信を削除する', article_comment_responses_path(comment.article_id, comment.id), method: :delete, remote: true  %></p>
+	     <% end %>
+     <% end %>
+
+
+    <%= render partial: 'comments/reply', locals: { reply: @reply, comment: comment } %>
+
+
+
+
   <% end %>
 <% end %>

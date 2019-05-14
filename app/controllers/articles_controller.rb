@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comment = Comment.new
     @comments = @article.comments
+    @reply = Reply.new
   end
 
   def edit

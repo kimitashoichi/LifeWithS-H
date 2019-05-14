@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.favorites
   end
 
   def histroy
