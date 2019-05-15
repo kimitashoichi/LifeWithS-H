@@ -1,16 +1,59 @@
-<h1>hiphop</h1>
+<div class="container">
+  <div class="skate-title-box">
+    <h1 class="skate-title">HipHop</h1>
+  </div>
+  <div class="wrap">
+  	 	<ul id="tab-menu" class="clearfix">
+  	 		<li><a href="#tab1" class="active">新着一覧</a></li>
+  	 		<li><a href="#tab2" class="">急上昇</a></li>
+  	 	</ul>
 
+	 <div id="tab-contents" class="clearfix">
+	 <!--新着記事一覧表示  -->
+		  <div id="tab1" class="tab">
+			  <% @hiphop_articles.each do |hiphop| %>
+				 <%= link_to article_path(hiphop.id) do %>
+					<div class="skate-article">
+						<div class="col-lg-4 skate-image">
+						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"250x250" %>
+						</div>
+						<div class="col-lg-6 skate-article-box">
+						  <h2 class="skate-article-title"><%= hiphop.article_title %></h2>
+						  <p class="skate-article-created"><%=hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
+						</div>
+					</div>
+				 <% end %>
+			  <% end %>
+			    <div class="paginate">
+                  <%= paginate @hiphop_articles, class: "paginate" %>
+               </div>
+		  </div>
 
-<% @hiphop_articles.each do |hiphop| %>
-   <% hiphop.article_images.each do |image| %>
-     <%= attachment_image_tag image, :image, :size=>"100x100" %>
-   <% end %>
- <p><%= hiphop.article_title %></p>
- <p><%= hiphop.created_at.strftime('%Y/%m/%d') %></p>
- <!-- 動画投稿ができているか試しで表示中、最終的には消す -->
- <p><iframe width="300" height="300" src= "<%= hiphop.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="0" origin showinfo="0"></iframe></p>
+  <!-- 閲覧数ランキング一覧表示 -->
+		  <div id="tab2" class="tab">
+            <%  if @hiphop_browse_ranks.present?  %>
 
-<!-- URLの変換ができているか試しで表示中、最終的には消す -->
- <p><%= text_url_to_link(h(hiphop.article_url)).html_safe %></p>
-<% end %>
+			  <% @hiphop_browse_ranks.each do |hiphop| %>
+				 <%= link_to article_path(hiphop.id) do %>
+					<div class="skate-article">
+						<div class="col-lg-4 skate-image">
+						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"250x250" %>
+						</div>
+						<div class="col-lg-6 skate-article-box">
+						  <h2 class="skate-article-title"><%= hiphop.article_title %></h2>
+						  <p class="skate-article-created"><%= hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
+						</div>
+					</div>
+				 <% end %>
+			  <% end %>
+			  	<div class="paginate">
+                  <%= paginate @hiphop_browse_ranks, class: "paginate" %>
+               </div>
 
+     <% else %>
+         <h1 class="article-none-message">急上昇記事はまだありません</h1>
+	   <% end %>
+		  </div>
+     </div>
+  </div>
+</div>

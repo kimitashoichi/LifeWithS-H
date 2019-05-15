@@ -1,3 +1,60 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.skate-title {
+	line-height: 250px;
+}
+
+.skate-article-title, {
+	margin-right: 40%;
+}
+
+.skate-article-created {
+	margin-right: 30%;
+}
+
+.wrap{
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.clearfix:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+#tab-menu li {
+	float: left;
+	list-style-type: none;
+	width: 25%;
+}
+
+#tab-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    background: #000;
+    border: 1px solid #000;
+}
+
+#tab-menu .active {
+	background: #fff;
+	color: #000;
+}
+
+
+#tab-contents .tab {
+    padding: 30px;
+    background: #fff;
+    border-top: none;
+}
+
+#tab-contents p {
+	color: #000;
+	line-height: 2.5;
+}

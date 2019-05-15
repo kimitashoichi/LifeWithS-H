@@ -11,14 +11,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  PER = 10
   def favorites
     @user = User.find(params[:id])
-    @favorites = @user.favorites
+    @favorites = @user.favorites.order(id: :desc).page(params[:page]).per(PER).reverse_order
   end
 
   def histroy
     @user = User.find(params[:id])
-    @browsing_histories = @user.browsing_histories
+    if @browsing_histories = @user.browsing_histories.present?
+      @browsing_histories = @user.browsing_histories
+    end
   end
 
   def leave

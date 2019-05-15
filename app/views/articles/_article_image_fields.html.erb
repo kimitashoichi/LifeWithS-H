@@ -8,8 +8,16 @@
 	 <p>リンク<%= f.text_field :article_url %></p>
      <p id='add-image'>image<%= f.attachment_field :article_images_images, multiple:true %></p>
 
+
+
+<button type="button" class="btn btn-primary active">
      <div class='add-image-buton'>画像を追加する</div>
+ </button>
+
+
+<button type="button" class="btn btn-danger active">
      <div class='delete-image-buton'>フォームを削除する</div>
+ </button>
 
      <div class="add-image-form"></div>
 

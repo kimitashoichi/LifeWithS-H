@@ -10,38 +10,47 @@ class ArticlesController < ApplicationController
     @comments = @article.comments
     @reply = Reply.new
 
-   if user_signed_in?
+    if user_signed_in?
 
-    new_history = BrowsingHistory.new
-    new_history.user_id = current_user.id
-    new_history.article_id = params[:id]
+      new_history = BrowsingHistory.new
+      new_history.user_id = current_user.id
+      new_history.article_id = params[:id]
 
-    if current_user.browsing_histories.exists?(article_id: "#{params[:id]}")
-      old_history = current_user.browsing_histories.find_by(article_id: "#{params[:id]}")
-      old_history.destroy
-    end
+      if current_user.browsing_histories.exists?(article_id: "#{params[:id]}")
+        old_history = current_user.browsing_histories.find_by(article_id: "#{params[:id]}")
+        old_history.destroy
+      end
 
-    new_history.save
+      new_history.save
 
-    histories_stock_limit = 10
-    histories = current_user.browsing_histories.all
-    if histories.count > histories_stock_limit
-      histories[0].destroy
-    end
+      histories_stock_limit = 10
+      histories = current_user.browsing_histories.all
+      if histories.count > histories_stock_limit
+        histories[0].destroy
+      end
 
-    end
+     end
   end
 
   def edit
     @article = Article.find(params[:id])
   end
 
+  PER = 10
   def skate
-    @skate_articles = Article.where(genre: 'Skate')
+    @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
+    if  @skate_browse_ranks = @skate_articles.browse_all_ranks.present?
+      @skate_browse_ranks = @skate_articles.browse_all_ranks
+      @skate_browse_ranks = Kaminari.paginate_array(@skate_browse_ranks).page(params[:page]).per(PER)
+    end
   end
 
   def hiphop
-    @hiphop_articles = Article.where(genre: 'HipHop')
+    @hiphop_articles = Article.where(genre: 'HipHop').order(id: :desc).page(params[:page]).per(PER).reverse_order
+    if  @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks.present?
+      @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks
+      @hiphop_browse_ranks = Kaminari.paginate_array(@hiphop_browse_ranks).page(params[:page]).per(PER)
+    end
   end
 
   def create
