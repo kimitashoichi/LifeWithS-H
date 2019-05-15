@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :confirm_admin_user, only: [:index]
   def index
     @contacts = Contact.all.order(id: :desc)
   end
@@ -21,6 +23,13 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
+
+  def confirm_admin_user
+    user = current_user
+    unless user_signed_in? || user.admin == true
+      redirect_to user_path(user.id)
+    end
+end
 
   private
 

@@ -10,9 +10,9 @@ class Article < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-   def self.browse_all_ranks
+  def self.browse_all_ranks
     if BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id).nil?
       Article.find(BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id))
     end
-  end
+ end
 end

@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @reply = Reply.new(reply_params)
     @article = Article.find(params[:article_id])

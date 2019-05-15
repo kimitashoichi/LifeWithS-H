@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :confirm_user, only: [:show, :favorites, :histroy, :leave, :update, :destroy]
+
   def index
     @users = User.search(params[:search])
   end
@@ -34,14 +37,20 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  # エラーメッセージを表示す流ようにする
   def destroy
     user = User.find(params[:id])
     if user.password == current_user.password
       user.destroy
-      redirect_to '/'
+      redirect_to home_path
     else
       render :leave
+    end
+  end
+
+  def confirm_user
+    user = User.find(params[:id])
+    if user.id != current_user.id then
+      redirect_to home_path
     end
   end
 

@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :confirm_admin_user, only: [:new, :create, :update, :destroy]
+
   def new
     @article = Article.new
     @article.article_images.build
@@ -39,7 +42,7 @@ class ArticlesController < ApplicationController
   PER = 10
   def skate
     @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
-    if  @skate_browse_ranks = @skate_articles.browse_all_ranks.present?
+    if @skate_browse_ranks = @skate_articles.browse_all_ranks.present?
       @skate_browse_ranks = @skate_articles.browse_all_ranks
       @skate_browse_ranks = Kaminari.paginate_array(@skate_browse_ranks).page(params[:page]).per(PER)
     end
@@ -47,7 +50,7 @@ class ArticlesController < ApplicationController
 
   def hiphop
     @hiphop_articles = Article.where(genre: 'HipHop').order(id: :desc).page(params[:page]).per(PER).reverse_order
-    if  @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks.present?
+    if @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks.present?
       @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks
       @hiphop_browse_ranks = Kaminari.paginate_array(@hiphop_browse_ranks).page(params[:page]).per(PER)
     end
@@ -80,6 +83,13 @@ class ArticlesController < ApplicationController
       redirect_to skate_articles_path
     else
       redirect_to hiphop_articles_path
+    end
+  end
+
+  def confirm_admin_user
+    user = current_user
+    unless user_signed_in? || user.admin == true
+      redirect_to user_path(user.id)
     end
   end
 
