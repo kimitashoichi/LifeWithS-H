@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pry-rails'
 gem 'paranoia', "~> 2.0"
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'

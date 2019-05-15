@@ -1,14 +1,60 @@
-<h1>Skate</h1>
+<div class="container">
+  <div class="skate-title-box">
+    <h1 class="skate-title">Skate</h1>
+  </div>
+  <div class="wrap">
+  	 	<ul id="tab-menu" class="clearfix">
+  	 		<li><a href="#tab1" class="active">新着一覧</a></li>
+  	 		<li><a href="#tab2" class="">急上昇</a></li>
+  	 	</ul>
 
-<% @skate_articles.each do |skate| %>
-  <% skate.article_images.each do |image| %>
-    <%= attachment_image_tag image, :image, :size=>"100x100" %>
-  <% end %>
- <p><%= skate.article_title %></p>
- <p><%= skate.created_at.strftime('%Y/%m/%d') %></p>
- <!-- 動画投稿ができているか試しで表示中、最終的には消す -->
- <p><iframe width="300" height="300" src= "<%= skate.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="0" origin showinfo="0"></iframe></p>
+	 <div id="tab-contents" class="clearfix">
+	 <!--新着記事一覧表示  -->
+		  <div id="tab1" class="tab">
+			  <% @skate_articles.each do |skate| %>
+				 <%= link_to article_path(skate.id) do %>
+					<div class="skate-article">
+						<div class="col-lg-4 skate-image">
+						  <%= attachment_image_tag skate.article_images.last, :image, :size=>"250x250" %>
+						</div>
+						<div class="col-lg-6 skate-article-box">
+						  <h2 class="skate-article-title"><%= skate.article_title %></h2>
+						  <p class="skate-article-created"><%= skate.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
+						</div>
+					</div>
+				 <% end %>
+			  <% end %>
+			    <div class="paginate">
+                  <%= paginate @skate_articles, class: "paginate" %>
+               </div>
+		  </div>
 
-<!-- URLの変換ができているか試しで表示中、最終的には消す -->
- <p><%= text_url_to_link(h(skate.article_url)).html_safe %></p>
-<% end %>
+
+  <!-- 閲覧数ランキング一覧表示 -->
+		  <div id="tab2" class="tab">
+		  	<%  if @skate_browse_ranks.present?  %>
+
+			  <% @skate_browse_ranks.each do |skate| %>
+				 <%= link_to article_path(skate.id) do %>
+					<div class="skate-article">
+						<div class="col-lg-4 skate-image">
+						  <%= attachment_image_tag skate.article_images.last, :image, :size=>"250x250" %>
+						</div>
+						<div class="col-lg-6 skate-article-box">
+						  <h2 class="skate-article-title"><%= skate.article_title %></h2>
+						  <p class="skate-article-created"><%= skate.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
+						</div>
+					</div>
+				 <% end %>
+			  <% end %>
+			  	<div class="paginate">
+                  <%= paginate @skate_browse_ranks, class: "paginate" %>
+               </div>
+
+          <% else %>
+               <h1 class="article-none-message">急上昇記事はまだありません</h1>
+	         <% end %>
+		  </div>
+     </div>
+  </div>
+</div>

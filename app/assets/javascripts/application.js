@@ -25,9 +25,18 @@ $(function () {
 	   $('.add-image-form').append('<div class="add-image-form2"></div>')
 	   $('.add-image-form2:last').append(form);
 	});
-
 	$(document).on("click", '.delete-image-buton', function(){
-	   $('.add-image-form2').hide(300);
+	   $('.add-image-form2').eq(-1).remove();
+	});
+
+
+	$('#tab-contents .tab[id != "tab1"]').hide();
+	$('#tab-menu a').on('click', function(){
+	   $("#tab-contents .tab").hide();
+	   $("#tab-menu .active").removeClass("active");
+	   $(this).addClass("active");
+	   $($(this).attr("href")).fadeIn(600);
+	   return false;
 	});
 
 });
