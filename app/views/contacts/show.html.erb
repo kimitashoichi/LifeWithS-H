@@ -1,7 +1,24 @@
-<h1>Contacts Detail</h1>
+<div class="container">
+    <h1 class="contact-detail-title">Contacts Detail</h1>
 
+ <% if @contact.user.present? %>
+   <div class="user-info-box">
+   	 <p class="contact-user-image"><%= attachment_image_tag @contact.user, :user_image, :size=>"250x250"  %></p>
+   	 <h3 class="contact-user-name"><%= @contact.user.last_name %> <%= @contact.user.first_name %></h3>
+   </div>
+<% else %>
+   <div class="none-contact-user"></div>
+ <% end %>
 
- <p><%= @contact.contact_email %></p>
- <p><%= @contact.contact_title %></p>
- <p><%= @contact.contact_text %></p>
+   <div class="contact-detail-box">
+   	<div class="contact-label"><span class="label label-primary">Title</span></div>
+	 <div class="contact-body"><%= @contact.contact_title %></div>
+
+	 <div class="contact-label"><span class="label label-primary">Text</span></div>
+	 <div class="contact-body"><%= @contact.contact_text %></div>
+
+	 <div class="contact-label"><span class="label label-primary">Email</span></div>
+	 <div class="contact-body"><%= @contact.contact_email %></div>
+   </div>
+</div>
 

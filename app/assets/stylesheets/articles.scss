@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.skate-title {
-	line-height: 250px;
-}
 
 .skate-article-title, {
 	margin-right: 40%;
@@ -59,10 +56,6 @@
 	line-height: 2.5;
 }
 
-.article-title {
-	line-height: 150px;
-}
-
 .article-images-show {
 	padding-left: 200px;
 	padding-bottom: 80px;
@@ -85,6 +78,11 @@ iframe {
 	font-size: 20px;
 }
 
+.skate-title,
+.article-title {
+	font-size: 60px;
+	line-height: 150px;
+}
 
 
 

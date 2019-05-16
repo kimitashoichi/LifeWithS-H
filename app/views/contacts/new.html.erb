@@ -1,8 +1,28 @@
-<h1>お問い合わせ投稿画面</h1>
+<div class="container">
 
- <%= form_for @contact do |f| %>
-  <p>メールアドレス<%= f.text_field :contact_email %></p>
-  <p>お問い合わせタイトル<%= f.text_field :contact_title %></p>
-  <p>お問い合わせ内容<%= f.text_area :contact_text %></p>
-  <p><%= f.submit 'SEND' %></p>
- <% end %>
+
+<h1 class="contact-new-title">お問い合わせ投稿画面</h1>
+
+
+
+   <div class="contact-form">
+		<%= form_for @contact do |f| %>
+		<div class="contact-label"><span class="label label-default">Email</span></div>
+		<div class="contact-body"><%= f.text_field :contact_email, :class =>"form-control" %></div>
+
+		 <div class="contact-label"><span class="label label-default">Title</span></div>
+		 <div class="contact-body"><%= f.text_field :contact_title, :class =>"form-control" %></div>
+
+		 <div class="contact-label"><span class="label label-default">Body</span></div>
+		 <div class="contact-body"><%= f.text_area :contact_text, :class =>"form-control", :size => "20x10" %></div>
+
+		 <div class="contact-btn">
+		 <%= f.submit 'SEND', :class => "btn btn-primary btn-lg btn-block active" %>
+		 </div>
+		<% end %>
+   </div>
+
+
+
+
+</div>

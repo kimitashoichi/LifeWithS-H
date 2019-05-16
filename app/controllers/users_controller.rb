@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :confirm_user, only: [:show, :favorites, :histroy, :leave, :update, :destroy]
 
+  PER = 10
   def index
-    @users = User.search(params[:search])
+    @users = User.search(params[:search]).order(id: :desc).page(params[:page]).per(PER).reverse_order
   end
 
   def show
@@ -14,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  PER = 10
   def favorites
     @user = User.find(params[:id])
     @favorites = @user.favorites.order(id: :desc).page(params[:page]).per(PER).reverse_order
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def histroy
     @user = User.find(params[:id])
     if @browsing_histories = @user.browsing_histories.present?
-      @browsing_histories = @user.browsing_histories
+      @browsing_histories = @user.browsing_histories.order(id: :desc).page(params[:page]).per(PER).reverse_order
     end
   end
 
@@ -38,8 +38,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    if user.password == current_user.password
+    binding.pry
+    @user = User.find(params[:id])
+    if @user.password == params[:user][:password]
       user.destroy
       redirect_to home_path
     else

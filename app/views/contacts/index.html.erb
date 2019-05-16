@@ -1,8 +1,30 @@
-<h1>Contacts ALL</h1>
+<div class="container">
+<h1 class="contact-all-title">Contacts ALL</h1>
 
-<% @contacts.each do |c| %>
- <p><%= c.contact_title %></p>
- <p><%= link_to '詳細', contact_path(c.id) %></p>
-<% end %>
+<% if @contacts.present? %>
+   <div class="col-lg-10 col-lg-offset-1">
+      <table class="table">
+      	<thead>
+      		<th></th>
+      		<th class="table-title">Name</th>
+      		<th class="table-title">Title</th>
+      		<th></th>
+      	</thead>
+
+     <% @contacts.each do |c| %>
+      	<thead>
+      		<th><%= attachment_image_tag c.user, :user_image, :size=>"100x100" %></th>
+      		<th><%= c.user.last_name %> <%= c.user.first_name %></th>
+      		<th><%= c.contact_title %></th>
+      		<th><%= link_to '詳細', contact_path(c.id), :class =>"btn btn-info" %></th>
+      	</thead>
+     <% end %>
+    </table>
+  </div>
+
+  <% else %>
+   <h3 class="contacts-none-message">お問い合わせはまだありません</h3>
+   <% end %>
+</div>
 
 

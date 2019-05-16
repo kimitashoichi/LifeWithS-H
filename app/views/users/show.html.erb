@@ -1,7 +1,42 @@
-<h1>Profile</h1>
+<div class="container">
 
-<%= attachment_image_tag @user, :user_image, :size=>"100x100" %>
-<p><%= @user.last_name %><% @user.first_name %></p>
-<!-- お気に入り一覧・閲覧履歴・お問い合わせ一覧のリンクも作成する -->
+<!-- ユーザーのIDを取得する変数を定義 -->
+<% id = @user.id %>
 
-<%= link_to '退会', leave_user_path(@user.id) %>
+  <h1 class="maypage-title">Profile</h1>
+   <div class="col-lg-6 user-image-box">
+       <%= attachment_image_tag @user, :user_image, :size=>"400x400" %>
+      <h2 class="user-name"><span class="label label-primary">Name</span>  <%= @user.last_name %> <%= @user.first_name %></h2>
+      <p class="edit-link-button"><%= link_to 'Edit', edit_user_path(id), :class=> "btn btn-success btn-lg btn-block active" %></p>
+   </div>
+
+
+   <div class="col-lg-6 user-menu-box">
+   	<p class="menu-link_button">
+   	 <%= link_to 'お気に入り一覧', favorites_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+
+   	 <p class="menu-link_button">
+   	 <%= link_to '閲覧履歴', histroy_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+
+
+
+  <% if @user.admin == true %>
+     <p class="menu-link_button">
+     <%= link_to 'お問い合わせ一覧(admin)', contacts_path, :class => "btn btn-primary btn-lg btn-block active" %></p>
+
+     <p class="menu-link_button">
+     <%= link_to 'ユーザー一覧', users_path, :class => "btn btn-primary btn-lg btn-block active" %></p>
+
+
+<% else %>
+   	 <p class="menu-link_button">
+   	 <%= link_to 'お問い合わせ一覧(ユーザー)', user_contact_list_contact_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+  <% end %>
+
+
+   	 <p class="menu-link_button">
+     <%= link_to '退会', leave_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+   </div>
+
+
+</div>
