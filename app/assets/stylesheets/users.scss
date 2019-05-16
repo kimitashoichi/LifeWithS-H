@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.favorites-title {
-	line-height: 250px;
-}
 
 .favorites-article-title, {
 	margin-right: 40%;
@@ -12,4 +9,86 @@
 
 .favorites-article-created {
 	margin-right: 30%;
+}
+
+.leave-form {
+	margin: 200px;
+}
+
+.leave-email-form {
+	padding-bottom: 50px;
+}
+
+.edit-link-button {
+	padding-top: 30px;
+	width: 70%;
+	display: inline-block;
+}
+
+.menu-link_button {
+	padding-bottom: 40px;
+	width: 70%;
+}
+
+.user-image-box {
+	text-align: center;
+}
+
+.user-menu-box {
+	padding-top: 40px;
+}
+
+.profile-edit-title {
+	line-height: 150px;
+}
+
+.edit-box {
+	text-align: center;
+}
+
+.before-user-image {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.form-group-image {
+	padding-left: 450px;
+	padding-bottom: 30px;
+}
+
+.form-group {
+	padding-bottom: 30px;
+}
+
+.user-search-box {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.leave-user-title,
+.users-index-title,
+.maypage-title,
+.favorites-title {
+	font-size: 60px;
+	line-height: 150px;
+}
+
+.leave-form {
+	margin: 0 auto;
+	width: 40%;
+}
+
+.leave-label {
+	text-align: left;
+	padding-bottom: 10px;
+	font-size: 30px;
+	padding-top: 30px;
+}
+
+.leave-body {
+	font-size: 20px;
+}
+
+.leave-btn {
+	padding-top: 50px;
 }

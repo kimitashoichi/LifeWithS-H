@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contacts, only: [:index, :show, :create, :new]
+  resources :contacts, only: [:index, :show, :create, :new, :destroy] do
+    member do
+      get :user_contact_list
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

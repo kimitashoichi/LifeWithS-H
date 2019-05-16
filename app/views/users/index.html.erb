@@ -1,16 +1,37 @@
-<h1>Users All</h1>
+<div class="container">
+  <h1 class="users-index-title">Users All</h1>
 
-<p>Search</p>
-<%= form_tag(users_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search' %>
-<% end %>
+  <div class="user-search-box">
+    <h3 class="user-search-title">Search</h3>
+   <%= form_tag(users_path,:method => 'get') do %>
+     <%= text_field_tag :search %>
+     <%= submit_tag 'Go', :class =>"btn btn-primary btn-sm" %>
+   <% end %>
+  </div>
 
-<% @users.each do |user| %>
 
-   <%= attachment_image_tag user, :user_image, :size=>"100x100" %>
-<p><%= user.last_name %><% user.first_name %></p>
-<p><%= user.email %></p>
-<!-- DM機能を作成したらDMを開始するリンク作成する -->
-<p><%= link_to 'Detail', user_path(user.id) %></p>
-<% end %>
+  <div class="col-lg-10 col-lg-offset-1">
+      <table class="table">
+      	<thead>
+      		<th></th>
+      		<th>Name</th>
+      		<th>Email</th>
+      		<th></th>
+      	</thead>
+
+          <% @users.each do |user| %>
+      	<thead>
+      		<th><%= attachment_image_tag user, :user_image, :size=>"100x100" %></th>
+      		<th><%= user.last_name %> <%= user.first_name %></th>
+      		<th><%= user.email %></th>
+      		<th><%= link_to 'Detail', user_path(user.id), :class =>"btn btn-info" %></th>
+      	</thead>
+          <% end %>
+　　　　</table>
+　　　    <div class="user-admin-index-paginate">
+           <%= paginate(@users, :theme => '../kaminari') %>
+         </div>
+　　</div>
+
+
+</div>
