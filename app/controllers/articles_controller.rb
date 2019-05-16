@@ -87,9 +87,8 @@ class ArticlesController < ApplicationController
   end
 
   def confirm_admin_user
-    user = current_user
-    unless user_signed_in? || user.admin == true
-      redirect_to user_path(user.id)
+    unless current_user.admin == true
+      redirect_to user_path(current_user.id), danger: "Unfortunately failed to acsess."
     end
   end
 
