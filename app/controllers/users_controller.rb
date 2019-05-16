@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @user = User.find(params[:id])
     if @user.password == params[:user][:password]
       user.destroy
@@ -51,7 +50,7 @@ class UsersController < ApplicationController
   def confirm_user
     user = User.find(params[:id])
     if user.id != current_user.id then
-      redirect_to home_path
+      redirect_to home_path, danger: "Unfortunately failed to acsess."
     end
   end
 
