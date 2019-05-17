@@ -6,8 +6,8 @@ class Article < ApplicationRecord
 
   accepts_attachments_for :article_images, attachment: :image
 
-  validates :article_title,   length: { minimum: 10 }
-  validates :article_text,   length: { minimum: 30 }
+  validates :article_title, length: { minimum: 10 }
+  validates :article_text, length: { minimum: 30 }
   validates :genre, presence: true
 
   def favorited_by?(user)
@@ -18,5 +18,13 @@ class Article < ApplicationRecord
     if BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id).nil?
       Article.find(BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id))
     end
- end
+  end
+
+  def self.search(search)
+    if search
+      Article.where(['article_title LIKE ?', "%#{search}%"])
+    else
+      Article.all
+    end
+  end
 end

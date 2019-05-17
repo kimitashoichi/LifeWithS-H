@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="article-all-title-box">
+    <h1 class="article-all-title">Aricle All</h1>
+  </div>
+
+  <div class="article-search-box">
+  	<div class="article-search-title">Search</div>
+  	<%= form_tag(admin_article_index_articles_path, method: :get) do %>
+  	 <%= text_field_tag :search %>
+  	 <%= submit_tag 'GO', :class =>"btn btn-primary btn-sm" %>
+  	 <% end %>
+  </div>
+
+  <div class="col-lg-10 col-lg-offset-1">
+      <table class="table">
+      	<thead>
+      		<th></th>
+      		<th class="article-table-title">Title</th>
+      		<th class="article-table-title">Genre</th>
+      		<th class="article-table-title">Post date</th>
+      		<th></th>
+      	</thead>
+
+          <% @all_aritcles.each do |article| %>
+      	<thead>
+      		<th><%= attachment_image_tag article.article_images.last, :image, :size=>"100x100" %></th>
+      		<th><%= article.article_title %></th>
+      		<th><%= article.genre %></th>
+      		<th><%= article.created_at.strftime("%Y.%m.%d") %></th>
+      		<th><%= link_to 'Edit', edit_article_path(article.id), :class =>"btn btn-info" %></th>
+      	</thead>
+          <% end %>
+　　　　</table>
+　　　    <div class="article-all-paginate">
+           <%= paginate(@all_aritcles, :theme => '../kaminari') %>
+         </div>
+　　</div>
+
+
+</div>

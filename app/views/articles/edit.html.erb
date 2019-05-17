@@ -1,5 +1,9 @@
+<div class="container">
+
 <h1>記事編集</h1>
 
 <%= render partial: "article_image_fields", locals: { article: @article } %>
 
 <%= link_to 'Delete', article_path(@article.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+
+</div>
