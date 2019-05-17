@@ -1,10 +1,15 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
-  before_action :confirm_admin_user, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :admin_article_index, :edit, :update]
+  before_action :confirm_admin_user, only: [:new, :create, :update, :destroy, :admin_article_index, :edit, :update]
 
+  PER = 10
   def new
     @article = Article.new
     @article.article_images.build
+  end
+
+  def admin_article_index
+    @all_aritcles = Article.search(params[:search]).order(id: :desc).page(params[:page]).per(PER).reverse_order
   end
 
   def show
@@ -39,7 +44,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  PER = 10
   def skate
     @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if @skate_browse_ranks = @skate_articles.browse_all_ranks.present?
