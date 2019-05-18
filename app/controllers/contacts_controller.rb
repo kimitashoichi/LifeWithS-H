@@ -22,11 +22,11 @@ class ContactsController < ApplicationController
     end
 
     if @contact.save && user_signed_in?
-      redirect_to user_path(current_user.id), success: "Successfully sended your Contact."
+      redirect_to user_path(current_user.id), success: "お問い合わせを送信しました"
     elsif @contact.save
-      redirect_to home_path, success: "Successfully sended your Contact."
+      redirect_to home_path, success: "お問い合わせを送信しました"
     else
-      flash.now[:danger] = "Unfortunately failed to send."
+      flash.now[:danger] = "お問い合わせを送信できませんでした"
       render :new
     end
   end
@@ -39,16 +39,16 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     contact.destroy
     if current_user.admin == true
-      redirect_to contacts_path, success: "Successfully deleted that's Contact."
+      redirect_to contacts_path, success: "お問い合わせを削除しました"
     else
-      redirect_to user_path(current_user.id), success: "Successfully deleted your Contact."
+      redirect_to user_path(current_user.id), success: "お問い合わせを削除しました"
     end
   end
 
   def confirm_admin_user
     user = current_user
     unless user.admin == true
-      redirect_to user_path(user.id), danger: "Unfortunately failed to acsses."
+      redirect_to user_path(user.id), danger: "許可されていないアクションです"
     end
 end
 
