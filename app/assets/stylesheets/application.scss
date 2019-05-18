@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  */
  @import "bootstrap-sprockets";
@@ -23,7 +24,7 @@
 }
 
 header {
-	height: 80px;
+	height: 100px;
 	background-color: black;
   width: 100%;
 }
@@ -41,7 +42,7 @@ footer {
 }
 
 nav {
-  line-height: 60px;
+  line-height: 100px;
 }
 
 a {
@@ -57,6 +58,7 @@ a {
   list-style: none;
   display: inline-block;
   margin: 0 20px;
+  line-height: 70px;
 }
 
 .container {
@@ -65,3 +67,30 @@ a {
     box-sizing: border-box;
     min-height: 100vh;
 }
+
+.devise-title {
+  font-size: 60px;
+  line-height: 150px;
+}
+
+.devise-field {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.field {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.actions {
+  padding-bottom: 40px;
+}
+
+
+
+
+
+
+
+

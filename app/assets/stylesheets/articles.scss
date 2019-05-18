@@ -56,13 +56,9 @@
 	line-height: 2.5;
 }
 
-.article-images-show {
-	padding-left: 200px;
-	padding-bottom: 80px;
-}
-
 iframe {
 	padding-bottom: 50px;
+	margin-top: 200px;
 }
 
 .article-text {
@@ -96,6 +92,13 @@ iframe {
 .article-search-box {
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+#aritcle-images {
+	height: 800px;
+	width: 100%;
+	margin: 0 auto;
+	padding-bottom: 100px;
 }
 
 

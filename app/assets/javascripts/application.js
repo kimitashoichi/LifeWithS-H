@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 //= require cocoon
 
@@ -38,6 +39,19 @@ $(function () {
 	   $($(this).attr("href")).fadeIn(600);
 	   return false;
 	});
+
+    $("#theTarget").skippr({
+    transition : 'fade',
+    speed : 1000,
+    easing : 'easeOutQuart',
+    navType : 'block',
+    childrenElementType : 'div',
+    arrows : true,
+    autoPlay : false,
+    autoPlayDuration : 5000,
+    keyboardOnAlways : true,
+    hidePrevious : false
+  });
 
 
 });
