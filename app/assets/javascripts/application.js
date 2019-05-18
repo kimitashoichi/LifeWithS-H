@@ -12,12 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
-//= require cocoon
+
 
 $(function () {
 
@@ -30,6 +29,8 @@ $(function () {
 	   $('.add-image-form2').eq(-1).remove();
 	});
 
+
+    $('.container').fadeIn(700);
 
 	$('#tab-contents .tab[id != "tab1"]').hide();
 	$('#tab-menu a').on('click', function(){
@@ -52,6 +53,9 @@ $(function () {
     keyboardOnAlways : true,
     hidePrevious : false
   });
+
+
+
 
 
 });
