@@ -1,3 +1,63 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.about-title {
+	font-size: 60px;
+	line-height: 150px;
+}
+
+.about-text-title {
+	font-size: 30px;
+}
+
+.about-text-content-title {
+	font-size: 20px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.about-text-content {
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.about-text-caption {
+	padding-top: 80px;
+	font-size: 30px;
+	font-weight: bolder;
+	font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+}
+
+.profile-title {
+	padding-top: 80px;
+}
+
+.profile-box {
+	padding-bottom: 80px;
+}
+
+.profile-image {
+	background-image: url(/images/profile.jpg);
+	background-position:center;
+	background-size: cover;
+	border-radius: 50%;
+	height: 300px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.profile-content {
+	padding-top: 30px;
+}
+
+.profile-content-represent {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.profile-content-instagram {
+	font-size: 40px;
+}
