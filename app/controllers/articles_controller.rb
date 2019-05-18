@@ -61,14 +61,16 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new(article_params)
-    article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
-    article.save
+    @article = Article.new(article_params)
+    @article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
-    if article.genre == 'Skate'
-      redirect_to skate_articles_path
+    if @article.save && @article.genre == 'Skate'
+      redirect_to skate_articles_path, success: "記事を投稿しました"
+  elsif @article.save && @article.genre == 'HipHop'
+      redirect_to hiphop_articles_path, success: "記事を投稿しました"
     else
-      redirect_to hiphop_articles_path
+      flash.now[:danger] = "記事の投稿に失敗しました"
+      render :new
    end
   end
 
@@ -92,7 +94,7 @@ class ArticlesController < ApplicationController
 
   def confirm_admin_user
     unless current_user.admin == true
-      redirect_to user_path(current_user.id), danger: "Unfortunately failed to acsess."
+      redirect_to user_path(current_user.id), danger: "許可されていないアクションです"
     end
   end
 
