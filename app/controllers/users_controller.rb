@@ -39,10 +39,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.password == params[:user][:password]
-      user.destroy
+    if @user.valid_password?(params[:user][:password])
+      @user.destroy
       redirect_to home_path
     else
+      flash.now[:danger] = "退会に失敗しました。パスワードを確認してください"
       render :leave
     end
   end
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   def confirm_user
     user = User.find(params[:id])
     if user.id != current_user.id then
-      redirect_to home_path, danger: "Unfortunately failed to acsess."
+      redirect_to home_path, danger: "許可されていないアクションです"
     end
   end
 
