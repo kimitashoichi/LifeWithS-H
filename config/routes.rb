@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :skate
       get :hiphop
       get :admin_article_index
+      get :skate_practice
     end
   end
 

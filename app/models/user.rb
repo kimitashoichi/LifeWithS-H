@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :browsing_histories, dependent: :destroy
 
-  validates :last_name, presence: { message: 'を入力してください' }
-  validates :first_name, presence: { message: 'を入力してください' }
+  validates :last_name, presence: true
+  validates :first_name, presence: true
 
   attachment :user_image
 

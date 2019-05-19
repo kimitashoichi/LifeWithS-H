@@ -52,6 +52,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def skate_practice
+    @skate_practice = Article.where(genre: 'Practice').order(id: :desc).page(params[:page]).per(PER).reverse_order
+    if @skate_practice_browse_ranks = @skate_practice.browse_all_ranks.present?
+      @skate_practice_browse_ranks = @skate_practice.browse_all_ranks
+      @skate_practice_browse_ranks = Kaminari.paginate_array(skate_practice_browse_ranks).page(params[:page]).per(PER)
+    end
+  end
+
   def hiphop
     @hiphop_articles = Article.where(genre: 'HipHop').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if @hiphop_browse_ranks = @hiphop_articles.browse_all_ranks.present?
@@ -64,9 +72,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
-    if @article.save && @article.genre == 'Skate'
+    if @article.save && @article.genre == 'Practice'
+      redirect_to skate_practice_articles_path
+    end
+
+    if @article.save! && @article.genre == 'Skate'
       redirect_to skate_articles_path, success: "記事を投稿しました"
-  elsif @article.save && @article.genre == 'HipHop'
+  elsif @article.save! && @article.genre == 'HipHop'
       redirect_to hiphop_articles_path, success: "記事を投稿しました"
     else
       flash.now[:danger] = "記事の投稿に失敗しました"

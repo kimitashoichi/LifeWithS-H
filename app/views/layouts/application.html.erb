@@ -14,28 +14,42 @@
          <nav>
               <ul class="nav-list">
             <% if user_signed_in? %>
-                <li class="nav-list-item"><i class="fas fa-users" style="color: white;" ></i>
-                  <%= link_to "About Us",about_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-fire" style="color: white;" ></i>
-                  <%= link_to "Skate",skate_articles_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-music" style="color: white;" ></i>
-                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-home" style="color: white;" ></i>
-                  <%= link_to "my page", user_path(current_user.id), :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-sign-out-alt" style="color: white;" ></i>
-                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-users" style="color: black;" ></i>
+                  <%= link_to "About Us",about_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-fire" style="color: black;" ></i>
+                  <%= link_to "Skate",skate_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-walking" style="color: black;" ></i>
+                  <%= link_to "Practice",skate_practice_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-music" style="color: black;" ></i>
+                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-home" style="color: black;" ></i>
+                  <%= link_to "my page", user_path(current_user.id), :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-sign-out-alt" style="color: black;" ></i>
+                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>"color:black;" %></li>
 
             <% else %>
-                <li class="nav-list-item"><i class="fas fa-users" style="color: white;" ></i>
-                  <%= link_to "About Us",about_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-fire" style="color: white;" ></i>
-                  <%= link_to "Skate",skate_articles_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-music" style="color: white;" ></i>
-                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-door-open" style="color: white;" ></i>
-                  <%= link_to "Log In", new_user_session_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><i class="fas fa-hands-helping" style="color: white;" ></i>
-                  <%= link_to "Sign Up", new_user_registration_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-users" style="color: black;" ></i>
+                  <%= link_to "About Us",about_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-fire" style="color: black;" ></i>
+                  <%= link_to "Skate",skate_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-walking" style="color: black;" ></i>
+                  <%= link_to "Practice",skate_practice_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-music" style="color: black;" ></i>
+                  <%= link_to "HipHop", hiphop_articles_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-door-open" style="color: black;" ></i>
+                  <%= link_to "Log In", new_user_session_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-hands-helping" style="color: black;" ></i>
+                  <%= link_to "Sign Up", new_user_registration_path, :style=>"color:black;" %></li>
             <% end %>
                </ul>
          </nav>
@@ -49,7 +63,7 @@
     <%= yield %>
 
     <footer>
-      <p class="contact-text"><%= link_to "Contact Us", new_contact_path, :style=>"color:white;", class: "btn btn-warning" %></p>
+      <p class="contact-text"><%= link_to "Contact Us", new_contact_path, :style=>"color:black;", :class => "cp_btn" %></p>
       <p class="foter-text">CopyRight 2019 KIMITA All right reserved.</p>
     </footer>
   </body>

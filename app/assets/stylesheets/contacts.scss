@@ -7,15 +7,11 @@
 	font-size: 25px;
 }
 
+.contact-detail-title,
 .contact-all-title,
 .contact-new-title {
 	font-size: 60px;
 	line-height: 150px;
-}
-
-.contact-detail-title {
-	line-height: 150px;
-	font-size: 60px;
 }
 
 .contact-detail-box {
@@ -29,11 +25,13 @@
 	padding-bottom: 10px;
 	font-size: 30px;
 	padding-top: 30px;
+	font-weight: 800;
 }
 
 .contact-body {
 	font-size: 20px;
 	text-align: left;
+	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
 }
 
 .contact-form {
@@ -49,4 +47,7 @@
 .contact-btn {
 	padding-top: 50px;
 	margin-bottom: 80px;
+	display: inline-block;
+	text-align: right;
 }
+

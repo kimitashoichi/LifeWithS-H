@@ -5,40 +5,46 @@
 
   <h1 class="maypage-title">Profile</h1>
    <div class="col-lg-6 user-image-box">
-       <%= attachment_image_tag @user, :user_image, :size=>"400x400" %>
-      <h2 class="user-name"><span class="label label-primary">Name</span>  <%= @user.last_name %> <%= @user.first_name %></h2>
-      <p class="edit-link-button"><%= link_to 'Edit', edit_user_path(id), :class=> "btn btn-success btn-lg btn-block active" %></p>
+       <%= attachment_image_tag @user, :user_image, :size=>"400x300" %>
+      <h2 class="user-name"><span>Name:</span>  <%= @user.last_name %> <%= @user.first_name %></h2>
+      <p class="edit-link-button"><%= link_to 'Edit', edit_user_path(id), :class=> "cp_btn", :style=>"color:black;" %></p>
+
+ <% if @user.admin == true %>
+      <p class="edit-link-button">
+     <%= link_to 'Post Article', new_article_path, :class => "cp_btn", :style=>"color:black;" %></p>
+ <% end %>
+
    </div>
 
 
    <div class="col-lg-6 user-menu-box">
    	<p class="menu-link_button">
-   	 <%= link_to 'お気に入り一覧', favorites_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+   	 <%= link_to 'Clip All', favorites_user_path(id), :class => "cp_btn", :style=>"color:black;" %></p>
 
    	 <p class="menu-link_button">
-   	 <%= link_to '閲覧履歴', histroy_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+   	 <%= link_to 'Brousing Histroy', histroy_user_path(id), :class => "cp_btn", :style=>"color:black;"%></p>
 
 
 
   <% if @user.admin == true %>
      <p class="menu-link_button">
-     <%= link_to 'お問い合わせ一覧(admin)', contacts_path, :class => "btn btn-primary btn-lg btn-block active" %></p>
+     <%= link_to 'Contact All(admin)', contacts_path, :class => "cp_btn", :style=>"color:black;" %></p>
 
      <p class="menu-link_button">
-     <%= link_to 'ユーザー一覧', users_path, :class => "btn btn-primary btn-lg btn-block active" %></p>
+     <%= link_to 'User All', users_path, :class => "cp_btn", :style=>"color:black;" %></p>
 
      <p class="menu-link_button">
-     <%= link_to '記事一覧', admin_article_index_articles_path, :class => "btn btn-primary btn-lg btn-block active" %></p>
+     <%= link_to 'Article All', admin_article_index_articles_path, :class => "cp_btn" , :style=>"color:black;"%></p>
 
 
 <% else %>
    	 <p class="menu-link_button">
-   	 <%= link_to 'お問い合わせ一覧(ユーザー)', user_contact_list_contact_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+   	 <%= link_to 'Contact All', user_contact_list_contact_path(id), :class => "cp_btn", :style=>"color:black;" %></p>
   <% end %>
 
 
    	 <p class="menu-link_button">
-     <%= link_to '退会', leave_user_path(id), :class => "btn btn-primary btn-lg btn-block active" %></p>
+     <%= link_to 'Leave', leave_user_path(id), :class => "cp_btn", :style=>"color:black;" %></p>
    </div>
 
 

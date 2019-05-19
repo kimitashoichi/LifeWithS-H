@@ -1,7 +1,7 @@
 
 <%= form_for @article do |f| %>
 
-	 <%= f.select :genre, [["Skate", "Skate"], ["HipHop", "HipHop"]], :prompt => "選択してください" %>
+	 <%= f.select :genre, [["Skate", "Skate"], ["HipHop", "HipHop"],["Practice", "Practice"] ], :prompt => "選択してください" %>
 	 <p>動画<%= f.text_field :movie_url %></p>
 	 <p>タイトル<%= f.text_field :article_title %></p>
 	 <p>記事<%= f.text_field :article_text %></p>
