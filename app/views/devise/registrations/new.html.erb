@@ -6,28 +6,28 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
 　<div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name,:class =>"form-control",  autofocus: true %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name,:class =>"form-control",  autofocus: true %>
+    <%= f.label :姓 %>
+    <%= f.text_field :last_name,:class =>"form-control",  autofocus: true, :placeholder => "姓" %>
+    <%= f.label :名 %>
+    <%= f.text_field :first_name,:class =>"form-control",  autofocus: true, :placeholder => "名" %>
 　</div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email,:class =>"form-control",  autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email,:class =>"form-control",  autofocus: true, autocomplete: "email", :placeholder => "メールアドレスを入力してください" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上のパスワードを設定してください)</em>
     <% end %><br />
-    <%= f.password_field :password,:class =>"form-control",  autocomplete: "new-password" %>
+    <%= f.password_field :password,:class =>"form-control",  autocomplete: "new-password", :placeholder => "パスワードを入力してください" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation,:class =>"form-control", autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation,:class =>"form-control", autocomplete: "new-password", :placeholder => "確認のためもう一度パスワードを入力してください" %>
   </div>
 
   <div class="actions">

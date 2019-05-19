@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="favorites-title">お気に入り一覧</h1>
+  <h1 class="favorites-title">Clip All</h1>
   <% if @favorites.present? %>
      <% @favorites.each do |f| %>
 	   <%= link_to article_path(f.article_id) do %>

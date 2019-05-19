@@ -6,7 +6,7 @@
       <table class="table">
       	<thead>
       		<th></th>
-      		<th class="table-title">Name</th>
+      		<th class="table-title"></th>
       		<th class="table-title">Title</th>
       		<th></th>
       	</thead>
@@ -14,9 +14,9 @@
      <% @contacts.each do |c| %>
       	<thead>
       		<th><%= attachment_image_tag c.user, :user_image, :size=>"100x100" %></th>
-      		<th><%= c.user.last_name %> <%= c.user.first_name %></th>
+      		<th></th>
       		<th><%= c.contact_title %></th>
-      		<th><%= link_to '詳細', contact_path(c.id), :class =>"btn btn-info" %></th>
+      		<th><%= link_to 'Detail', contact_path(c.id), :class =>"cp_btn", :style=>"color:black;" %></th>
       	</thead>
      <% end %>
     </table>

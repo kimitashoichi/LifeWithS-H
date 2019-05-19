@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="favorites-title">閲覧履歴一覧</h1>
+  <h1 class="favorites-title">Browsing Histroy</h1>
   <% if @browsing_histories.present? %>
      <% @browsing_histories.each do |h| %>
 	   <%= link_to article_path(h.article_id) do %>

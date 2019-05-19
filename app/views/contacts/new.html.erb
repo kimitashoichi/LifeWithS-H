@@ -1,23 +1,23 @@
 <div class="container">
 
 
-<h1 class="contact-new-title">お問い合わせ投稿画面</h1>
+<h1 class="contact-new-title">Post Contact</h1>
 
 
 
    <div class="contact-form">
 		<%= form_for @contact do |f| %>
-		<div class="contact-label"><span class="label label-default">Email</span></div>
-		<div class="contact-body"><%= f.text_field :contact_email, :class =>"form-control" %></div>
+		<div class="contact-label">Email</div>
+		<div class="contact-body"><%= f.text_field :contact_email, :class =>"form-control", :placeholder => "メールアドレスを入力してください" %></div>
 
-		 <div class="contact-label"><span class="label label-default">Title</span></div>
-		 <div class="contact-body"><%= f.text_field :contact_title, :class =>"form-control" %></div>
+		 <div class="contact-label">Title</div>
+		 <div class="contact-body"><%= f.text_field :contact_title, :class =>"form-control", :placeholder => "タイトルを入力してください（1文字以上、30文字以内）" %></div>
 
-		 <div class="contact-label"><span class="label label-default">Body</span></div>
-		 <div class="contact-body"><%= f.text_area :contact_text, :class =>"form-control", :size => "20x10" %></div>
+		 <div class="contact-label">Body</div>
+		 <div class="contact-body"><%= f.text_area :contact_text, :class =>"form-control", :size => "20x10", :placeholder => "お問い合わせ内容を入力してください（1文字以上、200文字以内）" %></div>
 
 		 <div class="contact-btn">
-		 <%= f.submit 'SEND', :class => "btn btn-primary btn-lg btn-block active" %>
+		 <%= f.submit 'SEND', :class => "cp_btn" %>
 		 </div>
 		<% end %>
    </div>

@@ -4,11 +4,11 @@
 
 
 .skate-article-title, {
-	margin-right: 40%;
+	text-align: left;
 }
 
 .skate-article-created {
-	margin-right: 30%;
+	text-align: left;
 }
 
 .wrap{
@@ -58,7 +58,7 @@
 
 iframe {
 	padding-bottom: 50px;
-	margin-top: 200px;
+	margin-top: 280px;
 }
 
 .article-text {
@@ -79,10 +79,6 @@ iframe {
 .article-all-title {
 	font-size: 60px;
 	line-height: 150px;
-}
-
-.article-all-paginate {
-
 }
 
 .article-table-title {

@@ -21,13 +21,14 @@
 
 .edit-link-button {
 	padding-top: 30px;
-	width: 70%;
 	display: inline-block;
 }
 
 .menu-link_button {
 	padding-bottom: 40px;
 	width: 70%;
+	display: inline-block;
+
 }
 
 .user-image-box {
@@ -36,14 +37,16 @@
 
 .user-menu-box {
 	padding-top: 40px;
-}
-
-.profile-edit-title {
-	line-height: 150px;
+	text-align: right;
 }
 
 .edit-box {
 	text-align: center;
+}
+
+.edit-from-box {
+	width: 30%;
+	margin: 0 auto;
 }
 
 .before-user-image {
@@ -51,12 +54,18 @@
 	padding-bottom: 20px;
 }
 
+
 .form-group-image {
-	padding-left: 450px;
 	padding-bottom: 30px;
 }
 
 .form-group {
+	padding-bottom: 30px;
+}
+
+.form-group-submit {
+	display: inline-block;
+	text-align: right;
 	padding-bottom: 30px;
 }
 
@@ -68,7 +77,8 @@
 .leave-user-title,
 .users-index-title,
 .maypage-title,
-.favorites-title {
+.favorites-title,
+.profile-edit-title {
 	font-size: 60px;
 	line-height: 150px;
 }
@@ -83,6 +93,7 @@
 	padding-bottom: 10px;
 	font-size: 30px;
 	padding-top: 30px;
+	font-weight: 500;
 }
 
 .leave-body {
@@ -91,4 +102,7 @@
 
 .leave-btn {
 	padding-top: 50px;
+	display: inline-block;
+	text-align: center;
 }
+

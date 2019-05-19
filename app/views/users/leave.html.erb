@@ -4,15 +4,16 @@
 
    <div class="leave-form">
 		<%= form_for @user, :html => { :method => :delete } do |f| %>
-		<div class="leave-label"><span class="label label-default">Email</span></div>
+		<div class="leave-label">Email</div>
 		<div class="leave-body"><%= f.text_field :email, :class =>"form-control" %></div>
 
-		 <div class="leave-label"><span class="label label-default">Password</span></div>
-		 <div class="leave-body"><%= f.text_field :password, :class =>"form-control" %></div>
+		 <div class="leave-label">Password</div>
+		 <div class="leave-body"><%= f.text_field :password, :class =>"form-control", :placeholder => "パスワードを入力してください" %></div>
 		 <div class="leave-btn">
-		 <%= f.submit 'SEND', :class => "btn btn-danger btn-lg btn-block active", data: {confirm: 'このサイトに関する全てのデータが消えますがよろしいですか？'} %>
+		 <%= f.submit 'SEND', :class => "cp_btn", data: {confirm: 'このサイトに関する全てのデータが消えますがよろしいですか？'} %>
 		 </div>
 		<% end %>
+
    </div>
 </div>
 

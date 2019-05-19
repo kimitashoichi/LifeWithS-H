@@ -15,10 +15,10 @@
 				 <%= link_to article_path(skate.id) do %>
 					<div class="skate-article">
 						<div class="col-lg-4 skate-image">
-						  <%= attachment_image_tag skate.article_images.last, :image, :size=>"250x250" %>
+						  <%= attachment_image_tag skate.article_images.last, :image, :size=>"200x200" %>
 						</div>
 						<div class="col-lg-6 skate-article-box">
-						  <h2 class="skate-article-title"><%= skate.article_title %></h2>
+						  <h3 class="skate-article-title"><%= skate.article_title %></h3>
 						  <p class="skate-article-created"><%= skate.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
 						</div>
 					</div>
