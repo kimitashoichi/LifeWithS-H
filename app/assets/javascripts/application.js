@@ -30,7 +30,7 @@ $(function () {
 	});
 
 
-    $('.container').fadeIn(700);
+    $('.container').fadeIn(600);
 
 	$('#tab-contents .tab[id != "tab1"]').hide();
 	$('#tab-menu a').on('click', function(){
@@ -56,19 +56,19 @@ $(function () {
 
 
   $(document).on('click', '.sign_button', function() {
-    $('.sign_modal_wrapper').show(300);
-    $('.sign_modal').show(300);
+    $('.sign_modal_wrapper').fadeIn(300);
+    $('.sign_modal').fadeIn(300);
     if ($(this).hasClass('sign_up_button')) {
-      $('.sign_up_modal').show(300);
+      $('.sign_up_modal').fadeIn(300);
     } else {
-      $('.sign_in_modal').show(300);
+      $('.sign_in_modal').fadeIn(300);
     }
   });
 
   $(document).on('click', '.sign_modal_wrapper, .fa_wrapper', function() {
-    $('.sign_modal_wrapper').hide(300);
-    $('.sign_modal').hide(300);
-    $('.sign_modal_content').hide(300);
+    $('.sign_modal_wrapper').fadeOut(300);
+    $('.sign_modal').fadeOut(300);
+    $('.sign_modal_content').fadeOut(300);
 });
 
 

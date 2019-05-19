@@ -11,43 +11,48 @@
 
   <body>
     <header>
+
          <nav>
+
+
               <ul class="nav-list">
             <% if user_signed_in? %>
-                <li class="nav-list-item"><i class="fas fa-users" style="color: black;" ></i>
-                  <%= link_to "About Us",about_path, :style=>"color:black;" %></li>
+                <li class="nav-list-item-title">
+                  <%= link_to "LifeWithS-H", home_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-fire" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-users" ></i>
+                  <%= link_to "About Us",about_path, :style=>"color:black;"%></li>
+
+                <li class="nav-list-item"><i class="fas fa-fire"></i>
                   <%= link_to "Skate",skate_articles_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-walking" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-walking"></i>
                   <%= link_to "Practice",skate_practice_articles_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-music" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-music"></i>
                   <%= link_to "HipHop", hiphop_articles_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-home" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-home"></i>
                   <%= link_to "my page", user_path(current_user.id), :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-sign-out-alt" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-sign-out-alt"></i>
                   <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>"color:black;" %></li>
 
             <% else %>
-                <li class="nav-list-item"><i class="fas fa-users" style="color: black;" ></i>
+                <li class="nav-list-item-title">
+                  <%= link_to "LifeWithS-H", home_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item"><i class="fas fa-users"></i>
                   <%= link_to "About Us",about_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-fire" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-fire"></i>
                   <%= link_to "Skate",skate_articles_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-walking" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-walking"></i>
                   <%= link_to "Practice",skate_practice_articles_path, :style=>"color:black;" %></li>
 
-                <li class="nav-list-item"><i class="fas fa-music" style="color: black;" ></i>
+                <li class="nav-list-item"><i class="fas fa-music"></i>
                   <%= link_to "HipHop", hiphop_articles_path, :style=>"color:black;" %></li>
-
-                <li class="nav-list-item top-signup-btn sign_button sign_in_button"><i class="fas fa-door-open" style="color: black;" ></i>Log In</li>
-
-                <li class="nav-list-item top-signup-btn sign_button sign_up_button"><i class="fas fa-hands-helping" style="color: black;" ></i>Sign Up</li>
             <% end %>
                </ul>
          </nav>

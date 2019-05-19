@@ -13,7 +13,7 @@
 
      <% @contacts.each do |c| %>
       	<thead>
-      		<th><%= attachment_image_tag c.user, :user_image, :size=>"100x100" %></th>
+      		<th><%= attachment_image_tag c.user, :user_image,fallback: "no_image.jpg", :size=>"100x100" %></th>
       		<th></th>
       		<th><%= c.contact_title %></th>
       		<th><%= link_to 'Detail', contact_path(c.id), :class =>"cp_btn", :style=>"color:black;" %></th>

@@ -5,7 +5,7 @@
 
   <h1 class="maypage-title">Profile</h1>
    <div class="col-lg-6 user-image-box">
-       <%= attachment_image_tag @user, :user_image, :size=>"400x300" %>
+       <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", :size=>"400x300" %>
       <h2 class="user-name"><span>Name:</span>  <%= @user.last_name %> <%= @user.first_name %></h2>
       <p class="edit-link-button"><%= link_to 'Edit', edit_user_path(id), :class=> "cp_btn", :style=>"color:black;" %></p>
 

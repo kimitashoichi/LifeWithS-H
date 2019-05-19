@@ -3,7 +3,7 @@
 
  <% if @contact.user.present? %>
    <div class="user-info-box">
-   	 <p class="contact-user-image"><%= attachment_image_tag @contact.user, :user_image, :size=>"250x250"  %></p>
+   	 <p class="contact-user-image"><%= attachment_image_tag @contact.user, :user_image,fallback: "no_image.jpg", :size=>"250x250"  %></p>
    	 <h3 class="contact-user-name"><%= @contact.user.last_name %> <%= @contact.user.first_name %></h3>
    </div>
 <% else %>
