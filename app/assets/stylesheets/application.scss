@@ -53,14 +53,22 @@ a {
 }
 
 .nav-list {
-  text-align: center;
   text-align: right;
 }
+
 .nav-list-item {
   list-style: none;
   display: inline-block;
   margin: 0 20px;
-  line-height: 70px;
+  line-height: 10px;
+}
+
+.nav-list-item-title {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 40px;
+  float: left;
+  font-family: serif;
 }
 
 .container {
