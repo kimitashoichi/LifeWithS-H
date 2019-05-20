@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       render :leave
     end
   end
-
+  #管理者権限を持つユーザーは全てのアクションを許可される
   def confirm_user
     user = User.find(params[:id])
     if current_user.admin != true

@@ -18,19 +18,19 @@ class ArticlesController < ApplicationController
     @comments = @article.comments
     @reply = Reply.new
 
+    #サインインしていれば閲覧履歴を保存する
     if user_signed_in?
-
       new_history = BrowsingHistory.new
       new_history.user_id = current_user.id
       new_history.article_id = params[:id]
-
+      #同じページを見た際に重複したものは削除
       if current_user.browsing_histories.exists?(article_id: "#{params[:id]}")
         old_history = current_user.browsing_histories.find_by(article_id: "#{params[:id]}")
         old_history.destroy
       end
 
       new_history.save
-
+      #閲覧履歴の保存は最大10件、超えた場合は一番古いものを削除する
       histories_stock_limit = 10
       histories = current_user.browsing_histories.all
       if histories.count > histories_stock_limit
@@ -43,6 +43,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  #一覧表示の際に閲覧履歴の多い順で表示するための記述
   def skate
     @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if @skate_browse_ranks = @skate_articles.browse_all_ranks.present?
