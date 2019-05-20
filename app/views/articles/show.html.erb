@@ -11,6 +11,7 @@
 
       <iframe width="700" height="450" src= "<%= @article.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="0" origin showinfo="0"></iframe>
 
+
    <!-- お気に入り機能 -->
 	<div id="likes_buttons_<%= @article.id %>" class="liked_box" >
 	   <%= render partial: 'favorites/favorite', locals: { article: @article } %>
@@ -20,18 +21,23 @@
       <p class="article-link"><%= text_url_to_link(h(@article.article_url)).html_safe %></p>
 
 
+
+
     <!-- コメント投稿、一覧表示部分 -->
-	<div>
-    <h4>コメント</h4>
+
+    <h1>All Comments</h1>
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, reply: @reply } %>
     </div>
+    <div class="comment-post-box col-lg-6 col-lg-offset-3">
     <% if user_signed_in? %>
       <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
     <% end %>
-  </div>
+   </div>
 
 
+
+</div>
 </div>
 
 
