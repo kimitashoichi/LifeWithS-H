@@ -11,10 +11,7 @@
 
   <body>
     <header>
-
          <nav>
-
-
               <ul class="nav-list">
             <% if user_signed_in? %>
                 <li class="nav-list-item-title">
@@ -38,7 +35,7 @@
                 <li class="nav-list-item"><i class="fas fa-sign-out-alt"></i>
                   <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>"color:black;" %></li>
 
-            <% else %>
+          <% else %>
                 <li class="nav-list-item-title">
                   <%= link_to "LifeWithS-H", home_path, :style=>"color:black;" %></li>
 
@@ -54,14 +51,15 @@
                 <li class="nav-list-item"><i class="fas fa-music"></i>
                   <%= link_to "HipHop", hiphop_articles_path, :style=>"color:black;" %></li>
             <% end %>
-               </ul>
+              </ul>
          </nav>
     </header>
-    <% flash.each do |key, value| %>
-      <% key = "info" if key == "notice" %>
-      <% key = "danger"  if key == "alert" %>
-      <%= content_tag :div, value, class: "alert alert-#{key}" %>
-    <% end %>
+
+      <% flash.each do |key, value| %>
+        <% key = "info" if key == "notice" %>
+        <% key = "danger"  if key == "alert" %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <% end %>
 
     <%= yield %>
 

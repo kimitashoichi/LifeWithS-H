@@ -16,8 +16,6 @@
 //= require bootstrap-sprockets
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
-
-
 $(function () {
 
 	$(document).on("click", '.add-image-buton', function(){
@@ -29,8 +27,7 @@ $(function () {
 	   $('.add-image-form2').eq(-1).remove();
 	});
 
-
-    $('.container').fadeIn(600);
+  $('.container').fadeIn(600);
 
 	$('#tab-contents .tab[id != "tab1"]').hide();
 	$('#tab-menu a').on('click', function(){
@@ -41,7 +38,7 @@ $(function () {
 	   return false;
 	});
 
-    $("#theTarget").skippr({
+  $("#theTarget").skippr({
     transition : 'fade',
     speed : 1000,
     easing : 'easeOutQuart',
@@ -53,7 +50,6 @@ $(function () {
     keyboardOnAlways : true,
     hidePrevious : false
   });
-
 
   $(document).on('click', '.sign_button', function() {
     $('.sign_modal_wrapper').fadeIn(300);
@@ -69,9 +65,8 @@ $(function () {
     $('.sign_modal_wrapper').fadeOut(300);
     $('.sign_modal').fadeOut(300);
     $('.sign_modal_content').fadeOut(300);
-});
-
-
-
+  });
 
 });
+
+

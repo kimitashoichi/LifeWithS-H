@@ -36,7 +36,6 @@ class ArticlesController < ApplicationController
       if histories.count > histories_stock_limit
         histories[0].destroy
       end
-
      end
   end
 
@@ -78,7 +77,7 @@ class ArticlesController < ApplicationController
 
     if @article.save! && @article.genre == 'Skate'
       redirect_to skate_articles_path, success: "記事を投稿しました"
-  elsif @article.save! && @article.genre == 'HipHop'
+    elsif @article.save! && @article.genre == 'HipHop'
       redirect_to hiphop_articles_path, success: "記事を投稿しました"
     else
       flash.now[:danger] = "記事の投稿に失敗しました"

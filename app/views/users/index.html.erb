@@ -9,9 +9,8 @@
    <% end %>
   </div>
 
-
   <div class="col-lg-10 col-lg-offset-1">
-      <table class="table">
+    <table class="table">
       	<thead>
       		<th></th>
       		<th>Name</th>
@@ -27,11 +26,9 @@
       		<th><%= link_to 'Detail', user_path(user.id), :class =>"cp_btn", :style=>"color:black;" %></th>
       	</thead>
           <% end %>
-　　　　</table>
-　　　    <div class="user-admin-index-paginate">
-           <%= paginate(@users, :theme => '../kaminari') %>
-         </div>
-　　</div>
-
-
+　　　</table>
+　　　   <div class="user-admin-index-paginate">
+          <%= paginate(@users, :theme => '../kaminari') %>
+        </div>
+　</div>
 </div>

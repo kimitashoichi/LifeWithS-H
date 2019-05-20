@@ -1,28 +1,27 @@
 <div class="container">
-<h1 class="contact-all-title">Contacts ALL</h1>
+  <h1 class="contact-all-title">Contacts ALL</h1>
 
-<% if @contacts.present? %>
-   <div class="col-lg-10 col-lg-offset-1">
-      <table class="table">
-      	<thead>
-      		<th></th>
-      		<th class="table-title"></th>
-      		<th class="table-title">Title</th>
-      		<th></th>
-      	</thead>
+  <% if @contacts.present? %>
+     <div class="col-lg-10 col-lg-offset-1">
+       <table class="table">
+        	<thead>
+        		<th></th>
+        		<th class="table-title"></th>
+        		<th class="table-title">Title</th>
+        		<th></th>
+        	</thead>
 
-     <% @contacts.each do |c| %>
-      	<thead>
-      		<th><%= attachment_image_tag c.user, :user_image,fallback: "no_image.jpg", :size=>"100x100" %></th>
-      		<th></th>
-      		<th><%= c.contact_title %></th>
-      		<th><%= link_to 'Detail', contact_path(c.id), :class =>"cp_btn", :style=>"color:black;" %></th>
-      	</thead>
-     <% end %>
-    </table>
-  </div>
-
-  <% else %>
+        <% @contacts.each do |c| %>
+        	<thead>
+        		<th><%= attachment_image_tag c.user, :user_image,fallback: "no_image.jpg", :size=>"100x100" %></th>
+        		<th></th>
+        		<th><%= c.contact_title %></th>
+        		<th><%= link_to 'Detail', contact_path(c.id), :class =>"cp_btn", :style=>"color:black;" %></th>
+        	</thead>
+        <% end %>
+       </table>
+    </div>
+<% else %>
    <h3 class="contacts-none-message">お問い合わせはまだありません</h3>
    <% end %>
 </div>
