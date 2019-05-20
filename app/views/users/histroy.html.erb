@@ -1,25 +1,34 @@
 <div class="container">
   <h1 class="favorites-title">Browsing Histroy</h1>
 
-  <% if @browsing_histories.present? %>
-     <% @browsing_histories.each do |h| %>
-	   <%= link_to article_path(h.article_id) do %>
-		<div class="favorites-article">
-		  <div class="col-lg-4 favorites-image">
-		   <%= attachment_image_tag h.article.article_images.last, :image, :size=>"250x250" %>
-		  </div>
-		  <div class="col-lg-6 favorites-article-box">
-			<h2 class="favorites-article-title"><%= h.article.article_title %></h2>
-			<p class="favorites-article-created"><%= h.article.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
-		  </div>
-		</div>
-	 <% end %>
-  <% end %>
+<% if @browsing_histories.present? %>
+  <div class="col-lg-10 col-lg-offset-1">
+    <table class="table">
+      	<thead>
+      		<th></th>
+      		<th>Title</th>
+      		<th>Genre</th>
+      		<th>Post Date</th>
+      		<th></th>
+      	</thead>
 
-   <div class="paginate">
-	 <%= paginate @browsing_histories, class: "paginate" %>
-   </div>
-<% else %>
+           <% @browsing_histories.each do |h| %>
+      	<thead>
+      		<th><%= attachment_image_tag h.article.article_images.last, :image, :size=>"200x150" %></th>
+      		<th><%= h.article.article_title %></th>
+      		<th><%= h.article.genre %></th>
+      		<th><%= h.article.created_at.strftime("%Y.%m.%d") %></th>
+      		<th><%= link_to "Detail", article_path(h.article_id), :class => 'cp_btn', :style=>"color:black;" %></th>
+      	</thead>
+          <% end %>
+　　　</table>
+　　　   <div class="user-admin-index-paginate">
+          <%= paginate(@browsing_histories, :theme => '../kaminari') %>
+        </div>
+ <% else %>
    <h1 class="favorites-message-none">閲覧した記事がありません</h1>
    <% end %>
+　</div>
 </div>
+
+
