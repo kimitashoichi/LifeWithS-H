@@ -1,40 +1,30 @@
 <div class="all-comment-box col-lg-8 col-lg-offset-1">
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
-     <div class="col-lg-4 comment-user-box">
-      <p class="comment-user"><%= attachment_image_tag comment.user, :user_image,fallback: "no_image.jpg", :size=>"50x50" %>
-         <span class="name-style"><%= comment.user.last_name %>さん</span></p>
-    </div>
+         <div class="col-lg-4 comment-user-box">
+          <p class="comment-user"><%= attachment_image_tag comment.user, :user_image,fallback: "no_image.jpg", :size=>"50x50" %>
+             <span class="name-style"><%= comment.user.last_name %>さん</span></p>
+        </div>
 
-    <div class="col-lg-8 comment-text-box">
-      <p><%= comment.comment_text %>
-      <span class="mrg-20"></span>
-      <% if comment.user == current_user %>
-       <%= link_to '削除', article_comment_path(comment.article_id, comment.id), method: :delete, remote: true %>
-      <% end %>
-     </p>
+        <div class="col-lg-8 comment-text-box">
+          <p><%= comment.comment_text %><span class="mrg-20"></span>
+           <% if comment.user == current_user %>
+             <%= link_to '削除', article_comment_path(comment.article_id, comment.id), method: :delete, remote: true %>
+           <% end %>
+          </p>
 
-
-      <!-- 返信コメントの一覧表示 -->
-
-      <h4 class="reply-title">Reply</h4>
-       <% comment.replies.each do |r| %>
-         <p><%= attachment_image_tag r.user, :user_image,fallback: "no_image.jpg", :size=>"50x50" %>
-          <span class="name-style"><%= r.user.last_name %>さん</span><span class="mrg-20"></span>
-          <%= r.reply_text %><span class="mrg-20"></span>
-  	     <% if comment.user == current_user %>
-          <%= link_to '削除', article_comment_responses_path(comment.article_id, comment.id), method: :delete, remote: true  %></p>
-  	     <% end %>
-       <% end %>
-
-
-      <%= render partial: 'comments/reply', locals: { reply: @reply, comment: comment } %>
-    </div>
-
-
-
-
-
+          <!-- 返信コメントの一覧表示 -->
+          <h4 class="reply-title">Reply</h4>
+           <% comment.replies.each do |r| %>
+             <p><%= attachment_image_tag r.user, :user_image,fallback: "no_image.jpg", :size=>"50x50" %>
+              <span class="name-style"><%= r.user.last_name %>さん</span><span class="mrg-20"></span>
+              <%= r.reply_text %><span class="mrg-20"></span>
+      	     <% if comment.user == current_user %>
+               <%= link_to '削除', article_comment_responses_path(comment.article_id, comment.id), method: :delete, remote: true  %></p>
+      	     <% end %>
+           <% end %>
+            <%= render partial: 'comments/reply', locals: { reply: @reply, comment: comment } %>
+        </div>
     <% end %>
   <% end %>
 </div>

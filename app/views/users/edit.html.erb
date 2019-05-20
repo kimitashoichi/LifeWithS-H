@@ -1,34 +1,31 @@
 <div class="container">
+   <h1 class="profile-edit-title">Profile Edit</h1>
 
-  <h1 class="profile-edit-title">Profile Edit</h1>
-
-	 <div class="col-lg-12 edit-box">
+  <div class="col-lg-12 edit-box">
 	 <h4 class="user-image-title">Before Image</h4>
 	 <p class="before-user-image">
 	 <%= attachment_image_tag @user, :user_image, :size=>"300x300" %>
 	</p>
-
    <div class="edit-from-box">
-    <div class="form-horizontal">
-		<div class="form-group-image">
-		<%= form_for (@user) do |f| %>
-		 <%= f.attachment_field :user_image %>
-		</div>
-		 <%= f.label :name %>
-		<div class="form-group">
-		 <%= f.text_field :last_name, :class=>"form-control"%>
-		 <%= f.text_field :first_name, :class=>"form-control" %>
-		</div>
-		 <%= f.label :email %>
-		<div class="form-group">
-		 <%= f.text_field :email, :class=>"form-control" %>
-		</div>
-		<div class="form-group-submit">
-		 <%= f.submit 'SEND', :class =>"cp_btn" %>
-		</div>
-        <% end %>
-    </div>
-</div>
-
+	   <div class="form-horizontal">
+		 <div class="form-group-image">
+		  <%= form_for (@user) do |f| %>
+			   <%= f.attachment_field :user_image %>
+			 </div>
+			   <%= f.label :name %>
+			 <div class="form-group">
+			   <%= f.text_field :last_name, :class=>"form-control"%>
+			   <%= f.text_field :first_name, :class=>"form-control" %>
+			 </div>
+			   <%= f.label :email %>
+			 <div class="form-group">
+			   <%= f.text_field :email, :class=>"form-control" %>
+			 </div>
+			 <div class="form-group-submit">
+			   <%= f.submit 'SEND', :class =>"cp_btn" %>
+			 </div>
+          <% end %>
+	   </div>
+   </div>
   </div>
 </div>

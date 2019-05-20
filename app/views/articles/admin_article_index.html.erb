@@ -13,28 +13,27 @@
 
   <div class="col-lg-10 col-lg-offset-1">
       <table class="table">
-      	<thead>
-      		<th></th>
-      		<th class="article-table-title">Title</th>
-      		<th class="article-table-title">Genre</th>
-      		<th class="article-table-title">Post date</th>
-      		<th></th>
-      	</thead>
+        	<thead>
+        		<th></th>
+        		<th class="article-table-title">Title</th>
+        		<th class="article-table-title">Genre</th>
+        		<th class="article-table-title">Post date</th>
+        		<th></th>
+        	</thead>
 
-          <% @all_aritcles.each do |article| %>
-      	<thead>
-      		<th><%= attachment_image_tag article.article_images.last, :image, :size=>"100x100" %></th>
-      		<th><%= article.article_title %></th>
-      		<th><%= article.genre %></th>
-      		<th><%= article.created_at.strftime("%Y.%m.%d") %></th>
-      		<th><%= link_to 'Edit', edit_article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %></th>
-      	</thead>
-          <% end %>
+         <% @all_aritcles.each do |article| %>
+        	<thead>
+        		<th><%= attachment_image_tag article.article_images.last, :image, :size=>"100x100" %></th>
+        		<th><%= article.article_title %></th>
+        		<th><%= article.genre %></th>
+        		<th><%= article.created_at.strftime("%Y.%m.%d") %></th>
+        		<th><%= link_to 'Edit', edit_article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %></th>
+        	</thead>
+         <% end %>
 　　　　</table>
+
 　　　    <div class="article-all-paginate">
            <%= paginate(@all_aritcles, :theme => '../kaminari') %>
          </div>
-　　</div>
-
-
+　</div>
 </div>

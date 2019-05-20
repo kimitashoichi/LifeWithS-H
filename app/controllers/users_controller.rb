@@ -50,8 +50,10 @@ class UsersController < ApplicationController
 
   def confirm_user
     user = User.find(params[:id])
-    if user.id != current_user.id then
-      redirect_to home_path, danger: "許可されていないアクションです"
+    if current_user.admin != true
+      if user.id != current_user.id
+        redirect_to home_path, danger: "許可されていないアクションです"
+      end
     end
   end
 
