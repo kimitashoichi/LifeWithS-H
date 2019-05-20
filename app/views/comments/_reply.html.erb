@@ -1,8 +1,8 @@
  <%= form_with(model: reply, url:article_comment_responses_path(comment.article_id, comment.id), method: :post ) do |form| %>
     <div>
-		<%= form.text_field :reply_text, class: 'add-reply-form' %>
+		<%= form.text_field :reply_text, :class => "form-control" %>
 	</div>
-	 <div class="actions">
-		<%= form.submit "返信する" %>
+	 <div class="reply-actions">
+		<%= form.submit "Reply", :class => "cp_btn" %>
 	 </div>
 <% end %>
