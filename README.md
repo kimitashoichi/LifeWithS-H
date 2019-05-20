@@ -1,24 +1,23 @@
-# README
+# 制作したポートフォリオについて
+* サービス名
+　LifeWithS-H
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* コンセプト
+　Skateboard & hiphop
 
-Things you may want to cover:
+* このサービスを作ろうと思ったきっかけ
+・スケーターファッションが流行しているが、本当にスケートボードをしているユーザーが少ないと感じたから
 
-* Ruby version
+* 開発意図
+・スケーターを増やしたい
+・スケートボードの魅力を広めたい
+・これからスケートボードを始めるきっかけになってほしい
+・'ストリートカルチャー'という共通点を持つヒップホップも合わせて知って欲しい
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 使用した技術
+・記事の投稿、編集、削除機能
+・Ajaxを使用したコメント投稿、削除機能
+・gsubメソッドを使用したYouTube動画の投稿
+・検索機能
+・railsのgemである'paranoia'を使用した論理削除機能
+・railsのgemである'devise'を使用したログイン機能
