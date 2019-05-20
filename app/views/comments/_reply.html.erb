@@ -1,8 +1,10 @@
- <%= form_with(model: reply, url:article_comment_responses_path(comment.article_id, comment.id), method: :post ) do |form| %>
-    <div>
-		<%= form.text_field :reply_text, :class => "form-control" %>
-	</div>
-	 <div class="reply-actions">
-		<%= form.submit "Reply", :class => "cp_btn" %>
-	 </div>
-<% end %>
+ <% if user_signed_in? %>
+	 <%= form_with(model: reply, url:article_comment_responses_path(comment.article_id, comment.id), method: :post ) do |form| %>
+	    <div>
+			<%= form.text_field :reply_text, :class => "form-control" %>
+		</div>
+		 <div class="reply-actions">
+			<%= form.submit "Reply", :class => "cp_btn" %>
+		 </div>
+	 <% end %>
+ <% end %>
