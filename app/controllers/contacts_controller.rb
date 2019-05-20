@@ -12,7 +12,7 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
   end
-
+ #ログインしていないユーザーがお問い合わせを投稿した場合は'user_id'は0になるように設定している
   def create
     @contact = Contact.new(contact_params)
     if user_signed_in?
