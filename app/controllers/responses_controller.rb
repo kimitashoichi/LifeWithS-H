@@ -1,6 +1,6 @@
 class ResponsesController < ApplicationController
   before_action :authenticate_user!
-  #返信した際に部分テンプレートとして読み込まれるのでReplyの変数も記述している
+  # 返信した際に部分テンプレートとして読み込まれるのでReplyの変数も記述している
   def create
     @reply = Reply.new(reply_params)
     @article = Article.find(params[:article_id])

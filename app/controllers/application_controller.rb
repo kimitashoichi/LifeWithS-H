@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name])
   end
 
-  #エラー・サクセスメッセージの表示に使用
+  # エラー・サクセスメッセージの表示に使用
   add_flash_types :success, :info, :warning, :danger
 end

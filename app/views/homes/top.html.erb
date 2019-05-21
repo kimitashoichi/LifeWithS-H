@@ -3,8 +3,12 @@
   <div class="top-box">
 	<p class="top-title">LifeWithS-H</p>
     <div class="user-entry-box">
+  <% if user_signed_in? %>
+      <h1 class="signed-in-title">Welcome! You are Signed In!</h1>
+ <% else %>
       <h3 class="top-signup-btn sign_button sign_up_button cp_btn_top">Sign Up</h3>
       <h3 class="top-signup-btn sign_button sign_in_button cp_btn_top">Log In</h3>
+  <% end %>
     </div>
   </div>
 

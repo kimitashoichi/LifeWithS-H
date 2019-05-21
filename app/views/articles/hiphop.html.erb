@@ -11,19 +11,21 @@
 	 <div id="tab-contents" class="clearfix">
 	 <!--新着記事一覧表示  -->
 		  <div id="tab1" class="tab">
+		  	<div class="container-fluid">
 			  <% @hiphop_articles.each do |hiphop| %>
 				 <%= link_to article_path(hiphop.id) do %>
-					<div class="skate-article">
-						<div class="col-lg-4 skate-image">
+					<div class="row article-box ">
+						<div class="col-md-5 skate-image">
 						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"200x200" %>
 						</div>
-						<div class="col-lg-6 skate-article-box">
+						<div class="col-md-7 skate-article-box">
 						  <h3 class="skate-article-title"><%= hiphop.article_title %></h3>
 						  <p class="skate-article-created"><%=hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
 						</div>
 					</div>
 				 <% end %>
 			  <% end %>
+			</div>
 			    <div class="paginate">
                   <%= paginate @hiphop_articles, class: "paginate" %>
                </div>
@@ -32,20 +34,21 @@
   <!-- 閲覧数ランキング一覧表示 -->
 		  <div id="tab2" class="tab">
             <%  if @hiphop_browse_ranks.present?  %>
-
+             <div class="container-fluid">
 			  <% @hiphop_browse_ranks.each do |hiphop| %>
 				 <%= link_to article_path(hiphop.id) do %>
-					<div class="skate-article">
-						<div class="col-lg-4 skate-image">
-						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"250x250" %>
+					<div class="row article-box ">
+						<div class="col-md-5 skate-image">
+						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"200x200" %>
 						</div>
-						<div class="col-lg-6 skate-article-box">
-						  <h2 class="skate-article-title"><%= hiphop.article_title %></h2>
+						<div class="col-md-7 skate-article-box">
+						  <h3 class="skate-article-title"><%= hiphop.article_title %></h3>
 						  <p class="skate-article-created"><%= hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
 						</div>
 					</div>
 				 <% end %>
 			  <% end %>
+			</div>
 			  	<div class="paginate">
                   <%= paginate @hiphop_browse_ranks, class: "paginate" %>
                </div>

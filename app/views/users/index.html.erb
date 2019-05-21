@@ -1,11 +1,11 @@
 <div class="container">
   <h1 class="users-index-title">Users All</h1>
 
-  <div class="user-search-box">
+  <div class="user-search-box form-inline">
     <h3 class="user-search-title">Search</h3>
    <%= form_tag(users_path,:method => 'get') do %>
-     <%= text_field_tag :search%>
-     <%= submit_tag 'Go', :class =>"btn btn-primary btn-sm" %>
+     <%= text_field_tag :search , "", :class=>"form-control"%>
+     <%= submit_tag 'Go', :class =>"btn btn-default btn-sm" %>
    <% end %>
   </div>
 
@@ -16,6 +16,7 @@
       		<th>Name</th>
       		<th>Email</th>
       		<th></th>
+          <th></th>
       	</thead>
 
           <% @users.each do |user| %>
@@ -24,6 +25,7 @@
       		<th><%= user.last_name %> <%= user.first_name %></th>
       		<th><%= user.email %></th>
       		<th><%= link_to 'Detail', user_path(user.id), :class =>"cp_btn", :style=>"color:black;" %></th>
+          <th><%= link_to 'Delete', user_path(user.id), :class =>"cp_btn", :style=>"color:black;", method: :delete, data: {confirm: '本当に退会させますか？'} %></th>
       	</thead>
           <% end %>
 　　　</table>

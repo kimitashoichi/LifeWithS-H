@@ -1,13 +1,13 @@
 <div class="container">
   <div class="article-all-title-box">
-    <h1 class="article-all-title">Aricle All</h1>
+    <h1 class="article-all-title">Article All</h1>
   </div>
 
-  <div class="article-search-box">
-  	<div class="article-search-title">Search</div>
+  <div class="article-search-box form-inline">
+  	<h4 class="article-search-title">Search</h4>
   	<%= form_tag(admin_article_index_articles_path, method: :get) do %>
-  	 <%= text_field_tag :search %>
-  	 <%= submit_tag 'GO', :class =>"btn btn-primary btn-sm" %>
+  	 <%= text_field_tag :search, "", :class=>"form-control" %>
+  	 <%= submit_tag 'GO', :class =>"btn btn-default btn-sm" %>
   	 <% end %>
   </div>
 
@@ -27,7 +27,15 @@
         		<th><%= article.article_title %></th>
         		<th><%= article.genre %></th>
         		<th><%= article.created_at.strftime("%Y.%m.%d") %></th>
-        		<th><%= link_to 'Edit', edit_article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %></th>
+            <th>
+        <% if user_signed_in? %>
+          <% if current_user.admin == true %>
+        		<%= link_to 'Edit', edit_article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %>
+      <% else %>
+            <%= link_to 'Detail', article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %>
+          <% end %>
+        <% end %>
+            </th>
         	</thead>
          <% end %>
 　　　　</table>

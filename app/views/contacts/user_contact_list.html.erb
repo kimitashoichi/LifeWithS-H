@@ -5,6 +5,7 @@
      <div class="col-lg-10 col-lg-offset-1">
         <table class="table">
         	<thead>
+            <th class="table-title">Name</th>
         		<th class="table-title">Title</th>
             <th></th>
         		<th class="table-title">Post date</th>
@@ -14,6 +15,7 @@
 
        <% @users_contacts.each do |c| %>
         	<thead>
+            <th><%= c.contact_name %></th>
         		<th><%= c.contact_title %></th>
             <th></th>
             <th><%= c.created_at.strftime("%Y.%m.%d") %></th>

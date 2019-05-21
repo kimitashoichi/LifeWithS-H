@@ -17,6 +17,13 @@
                 <li class="nav-list-item-title">
                   <%= link_to "LifeWithS-H", home_path, :style=>"color:black;" %></li>
 
+               <li class="nav-list-item-search form-inline">
+                 <%= form_tag(admin_article_index_articles_path, method: :get) do %>
+                  <%= text_field_tag :search,"", :class=>"form-control" %>
+                  <%= submit_tag 'GO', :class =>"btn btn-default btn-sm" %>
+                 <% end %>
+               </li>
+
                 <li class="nav-list-item"><i class="fas fa-users" ></i>
                   <%= link_to "About Us",about_path, :style=>"color:black;"%></li>
 
@@ -36,8 +43,16 @@
                   <%= link_to "Log Out", destroy_user_session_path, method: :delete, :style=>"color:black;" %></li>
 
           <% else %>
+
                 <li class="nav-list-item-title">
                   <%= link_to "LifeWithS-H", home_path, :style=>"color:black;" %></li>
+
+                <li class="nav-list-item-search form-inline">
+                  <%= form_tag(admin_article_index_articles_path, method: :get) do %>
+                   <%= text_field_tag :search,"", :class=>"form-control" %>
+                   <%= submit_tag 'GO', :class =>"btn btn-default btn-sm" %>
+                  <% end %>
+                </li>
 
                 <li class="nav-list-item"><i class="fas fa-users"></i>
                   <%= link_to "About Us",about_path, :style=>"color:black;" %></li>
