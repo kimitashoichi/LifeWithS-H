@@ -43,11 +43,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.admin == true
       @user.destroy
-      @user.update(email: @user.deleted_at.to_i.to_s + '_' + @user.email.to_s)
+      @user.update(email: @user.updated_at.to_i.to_s + '_' + @user.email.to_s)
       redirect_to users_path, danger: "ユーザーを削除しました"
   elsif @user.valid_password?(params[:user][:password])
       @user.destroy
-      @user.update(email: @user.deleted_at.to_i.to_s + '_' + @user.email.to_s)
+      @user.update(email: @user.updated_at.to_i.to_s + '_' + @user.email.to_s)
       redirect_to home_path
     else
       flash.now[:danger] = "退会に失敗しました。パスワードを確認してください"
