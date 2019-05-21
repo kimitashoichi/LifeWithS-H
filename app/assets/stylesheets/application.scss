@@ -69,15 +69,21 @@ a {
   font-size: 40px;
   float: left;
   font-family: serif;
+  margin-right: 40px;
+}
+
+.nav-list-item-search {
+  display: inline-block;
+  float: left;
 }
 
 .container {
-    text-align: center;
-    position: relative;
-    box-sizing: border-box;
-    min-height: 100vh;
-    display: none;
-    margin-top: 100px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: none;
+  margin-top: 100px;
 }
 
 .devise-title {

@@ -37,17 +37,25 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  #管理者はパスワードなしで退会させることができる
+  #退会後に同じメールアドレスでも登録できるように退会日時を加えたものにアップデートしている
   def destroy
     @user = User.find(params[:id])
-    if @user.valid_password?(params[:user][:password])
+    if current_user.admin == true
       @user.destroy
+      @user.update(email: @user.deleted_at.to_i.to_s + '_' + @user.email.to_s)
+      redirect_to users_path, danger: "ユーザーを削除しました"
+  elsif @user.valid_password?(params[:user][:password])
+      @user.destroy
+      @user.update(email: @user.deleted_at.to_i.to_s + '_' + @user.email.to_s)
       redirect_to home_path
     else
       flash.now[:danger] = "退会に失敗しました。パスワードを確認してください"
       render :leave
     end
   end
-  #管理者権限を持つユーザーは全てのアクションを許可される
+
+  # 管理者権限を持つユーザーは全てのアクションを許可される
   def confirm_user
     user = User.find(params[:id])
     if current_user.admin != true

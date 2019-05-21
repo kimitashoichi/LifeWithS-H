@@ -2,10 +2,16 @@
   <h1 class="contact-new-title">Post Contact</h1>
    <div class="contact-form">
 	  <%= form_for @contact do |f| %>
+		 <div class="contact-label">Name</div>
+		 <div class="contact-body">
+		 	<%= f.text_field :contact_name, :class =>"form-control", :placeholder => "名前を入力してください（空白では送信できません）" %>
+		 </div>
+
 		<div class="contact-label">Email</div>
 		 <div class="contact-body">
 			<%= f.text_field :contact_email, :class =>"form-control", :placeholder => "メールアドレスを入力してください" %>
 		 </div>
+
 
 		 <div class="contact-label">Title</div>
 		 <div class="contact-body">

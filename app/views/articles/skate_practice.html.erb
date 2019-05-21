@@ -11,41 +11,44 @@
 	 <div id="tab-contents" class="clearfix">
 	 <!--新着記事一覧表示  -->
 		  <div id="tab1" class="tab">
-			  <% @skate_practice.each do |practice| %>
+		  	<div class="container-fluid">
+			  <% @skate_practices.each do |practice| %>
 				 <%= link_to article_path(practice.id) do %>
-					<div class="skate-article">
-						<div class="col-lg-4 skate-image">
+					<div class="row article-box ">
+						<div class="col-md-5 skate-image">
 						  <%= attachment_image_tag practice.article_images.last, :image, :size=>"200x200" %>
 						</div>
-						<div class="col-lg-8 skate-article-box">
+						<div class="col-md-7 skate-article-box">
 						  <h3 class="skate-article-title"><%= practice.article_title %></h3>
 						  <p class="skate-article-created"><%=practice.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
 						</div>
 					</div>
 				 <% end %>
 			  <% end %>
+			</div>
 			    <div class="paginate">
-                  <%= paginate @skate_practice, class: "paginate" %>
+                  <%= paginate @skate_practices, class: "paginate" %>
                </div>
 		  </div>
 
   <!-- 閲覧数ランキング一覧表示 -->
 		  <div id="tab2" class="tab">
             <%  if @skate_practice_browse_ranks.present?  %>
-
+             <div class="container-fluid">
 			  <% @skate_practice_browse_ranks.each do |practice| %>
 				 <%= link_to article_path(practice.id) do %>
-					<div class="skate-article">
-						<div class="col-lg-4 skate-image">
-						  <%= attachment_image_tag practice.article_images.last, :image, :size=>"250x250" %>
+					<div class="row article-box ">
+						<div class="col-md-5 skate-image">
+						  <%= attachment_image_tag practice.article_images.last, :image, :size=>"200x200" %>
 						</div>
-						<div class="col-lg-6 skate-article-box">
-						  <h2 class="skate-article-title"><%= practice.article_title %></h2>
+						<div class="col-md-7 skate-article-box">
+						  <h3 class="skate-article-title"><%= practice.article_title %></h3>
 						  <p class="skate-article-created"><%= practice.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
 						</div>
 					</div>
 				 <% end %>
 			  <% end %>
+			</div>
 			  	<div class="paginate">
                   <%= paginate @skate_practice_browse_ranks, class: "paginate" %>
                </div>
