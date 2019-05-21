@@ -9,6 +9,7 @@ class Article < ApplicationRecord
   validates :article_title, length: { minimum: 10 }
   validates :article_text, length: { minimum: 30 }
   validates :genre, presence: true
+  validates :link_name, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
