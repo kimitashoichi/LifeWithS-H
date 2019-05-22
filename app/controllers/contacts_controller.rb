@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
-  before_action :confirm_admin_user, only: [:index]
+  before_action :authenticate_user!, only: [:index, :show, :user_contact_list, :destroy]
+  before_action :confirm_user, only: [:index, :user_contact_list, :destroy, :show]
   def index
     @contacts = Contact.all.order(id: :desc)
   end
@@ -46,12 +46,15 @@ class ContactsController < ApplicationController
     end
   end
 
-  def confirm_admin_user
-    user = current_user
-    unless user.admin == true
-      redirect_to user_path(user.id), danger: "許可されていないアクションです"
+  # 管理者権限を持つユーザーは全てのアクションを許可される
+  def confirm_user
+    user = User.find(params[:id])
+    if current_user.admin != true
+      if user.id != current_user.id
+        redirect_to home_path, danger: "許可されていないアクションです"
+      end
     end
-end
+  end
 
   private
 
