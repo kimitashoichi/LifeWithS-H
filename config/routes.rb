@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     collection do
       get :skate
       get :hiphop
-      get :admin_article_index
+      get :article_index
       get :skate_practice
     end
   end

@@ -5,7 +5,7 @@
 
   <div class="article-search-box form-inline">
   	<h4 class="article-search-title">Search</h4>
-  	<%= form_tag(admin_article_index_articles_path, method: :get) do %>
+  	<%= form_tag(article_index_articles_path, method: :get) do %>
   	 <%= text_field_tag :search, "", :class=>"form-control" %>
   	 <%= submit_tag 'GO', :class =>"btn btn-default btn-sm" %>
   	 <% end %>

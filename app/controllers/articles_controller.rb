@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     @article.article_images.build
   end
 
-  def admin_article_index
+  def article_index
     @all_aritcles = Article.search(params[:search]).order(id: :desc).page(params[:page]).per(PER).reverse_order
   end
 
