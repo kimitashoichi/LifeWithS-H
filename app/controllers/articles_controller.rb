@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   def skate
     @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if BrowsingHistory.present?
-      @skate_browse_ranks = @skate_articles.find(BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id))
+      @skate_browse_ranks = @skate_articles.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
       @skate_browse_ranks = Kaminari.paginate_array(@skate_browse_ranks).page(params[:page]).per(PER)
     end
   end
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
   def skate_practice
     @skate_practices = Article.where(genre: 'Practice').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if BrowsingHistory.present?
-      @skate_practice_browse_ranks = @skate_practices.find(BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id))
+      @skate_practice_browse_ranks = @skate_practices.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
       @skate_practice_browse_ranks = Kaminari.paginate_array(skate_practice_browse_ranks).page(params[:page]).per(PER)
     end
   end
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
   def hiphop
     @hiphop_articles = Article.where(genre: 'HipHop').order(id: :desc).page(params[:page]).per(PER).reverse_order
     if BrowsingHistory.present?
-      @hiphop_browse_ranks = @hiphop_articles.find(BrowsingHistory.group(:article_id).order('count(article_id) desc').limit(30).pluck(:article_id))
+      @hiphop_browse_ranks = @hiphop_articles.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
       @hiphop_browse_ranks = Kaminari.paginate_array(@hiphop_browse_ranks).page(params[:page]).per(PER)
     end
   end
