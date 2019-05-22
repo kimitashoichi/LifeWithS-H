@@ -19,6 +19,7 @@
         		<th class="article-table-title">Genre</th>
         		<th class="article-table-title">Post date</th>
         		<th></th>
+            <th></th>
         	</thead>
 
          <% @all_aritcles.each do |article| %>
@@ -27,12 +28,11 @@
         		<th><%= article.article_title %></th>
         		<th><%= article.genre %></th>
         		<th><%= article.created_at.strftime("%Y.%m.%d") %></th>
+            <th><%= link_to 'Detail', article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %></th>
             <th>
         <% if user_signed_in? %>
           <% if current_user.admin == true %>
         		<%= link_to 'Edit', edit_article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %>
-      <% else %>
-            <%= link_to 'Detail', article_path(article.id), :class =>"cp_btn", :style=>"color:black;" %>
           <% end %>
         <% end %>
             </th>

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_path(@user.id), success: "プロフィールを更新しました"
   end
 
   # 管理者はパスワードなしで退会させることができる
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     elsif @user.valid_password?(params[:user][:password])
       @user.destroy
       @user.update(email: @user.updated_at.to_i.to_s + '_' + @user.email.to_s)
-      redirect_to home_path
+      redirect_to home_path, success: "ユーザーを削除しました"
     else
       flash.now[:danger] = "退会に失敗しました。パスワードを確認してください"
       render :leave

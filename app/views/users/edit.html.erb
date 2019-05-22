@@ -4,7 +4,7 @@
   <div class="col-lg-12 edit-box">
 	 <h4 class="user-image-title">Before Image</h4>
 	 <p class="before-user-image">
-	 <%= attachment_image_tag @user, :user_image, :size=>"300x300" %>
+	 <%= attachment_image_tag @user, :user_image, :size=>"300x300", fallback: "no_image.jpg" %>
 	</p>
    <div class="edit-from-box">
 	   <div class="form-horizontal">

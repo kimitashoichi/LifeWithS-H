@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
     @article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
     if @article.save && @article.genre == 'Practice'
-      redirect_to skate_practice_articles_path
+      redirect_to skate_practice_articles_path, success: "記事を投稿しました"
     end
 
     if @article.save! && @article.genre == 'Skate'
@@ -89,7 +89,7 @@ class ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to skate_articles_path
+    redirect_to skate_articles_path, success: "記事を削除しました"
   end
 
   def update
@@ -98,9 +98,9 @@ class ArticlesController < ApplicationController
     article.update(article_params)
 
     if article.genre == 'Skate'
-      redirect_to skate_articles_path
+      redirect_to skate_articles_path, success: "記事を投稿完了しました"
     else
-      redirect_to hiphop_articles_path
+      redirect_to hiphop_articles_path, success: "記事を投稿完了しました"
     end
   end
 
