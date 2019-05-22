@@ -67,6 +67,8 @@ $(function () {
     $('.sign_modal_content').fadeOut(300);
   });
 
+  $('.flash-message-box').fadeOut(2300);
+
 });
 
 
