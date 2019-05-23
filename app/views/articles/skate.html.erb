@@ -31,10 +31,9 @@
                </div>
 		  </div>
 
-
   <!-- 閲覧数ランキング一覧表示 -->
 		  <div id="tab2" class="tab">
-		  	<%  if @skate_browse_ranks.present?  %>
+		  	<%  unless @skate_browse_ranks.nil?  %>
             <div class="container-fluid">
 			  <% @skate_browse_ranks.each do |skate| %>
 				 <%= link_to article_path(skate.id) do %>
