@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   accepts_attachments_for :article_images, attachment: :image
 
   validates :article_title, length: { minimum: 10 }
+  validates :article_title, length: { maximum: 35 }
   validates :article_text, length: { minimum: 30 }
   validates :genre, presence: true
   validates :link_name, presence: true
