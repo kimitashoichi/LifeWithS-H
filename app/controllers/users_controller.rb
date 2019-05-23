@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :confirm_user, only: [:show, :favorites, :histroy, :leave, :update, :destroy, :index]
+  before_action :confirm_user, only: [:show, :favorites, :histroy, :leave, :update, :destroy]
+  before_action :confim_admin, only: [:index]
 
   PER = 10
   def index
@@ -55,13 +56,20 @@ class UsersController < ApplicationController
     end
   end
 
-  # 管理者権限を持つユーザーは全てのアクションを許可される
+  # ID付きのページの前に行われるアクション
   def confirm_user
     user = User.find(params[:id])
     if current_user.admin != true
       if user.id != current_user.id
         redirect_to home_path, danger: "許可されていないアクションです"
       end
+    end
+  end
+
+　# ID無しのページの前に行われるアクション
+  def confim_admin
+    if current_user.admin != true
+        redirect_to home_path, danger: "許可されていないアクションです"
     end
   end
 
