@@ -8,9 +8,12 @@ class Article < ApplicationRecord
 
   validates :article_title, length: { minimum: 10 }
   validates :article_title, length: { maximum: 35 }
-  validates :article_text, length: { minimum: 30 }
+  validates :article_text, length: { minimum: 50 }
+  validates :article_text, length: { maximum: 700 }
   validates :genre, presence: true
   validates :link_name, presence: true
+  validates :movie_url, presence: true
+  validates :article_url, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

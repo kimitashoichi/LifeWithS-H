@@ -66,10 +66,10 @@ class UsersController < ApplicationController
     end
   end
 
-　# ID無しのページの前に行われるアクション
+  　 # ID無しのページの前に行われるアクション
   def confim_admin
     if current_user.admin != true
-        redirect_to home_path, danger: "許可されていないアクションです"
+      redirect_to home_path, danger: "許可されていないアクションです"
     end
   end
 
