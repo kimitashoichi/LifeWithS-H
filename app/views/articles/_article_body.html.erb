@@ -8,7 +8,7 @@
 	 <!--新着記事一覧表示  -->
 		  <div id="tab1" class="tab">
 		  	<div class="container-fluid">
-			  <% @skate_practices.each do |practice| %>
+			  <% article.each do |practice| %>
 				 <%= link_to article_path(practice.id) do %>
 					<div class="row article-box ">
 						<div class="col-md-5 skate-image">
@@ -23,15 +23,15 @@
 			  <% end %>
 			</div>
 			    <div class="paginate">
-                  <%= paginate @skate_practices, class: "paginate" %>
+                  <%= paginate article, class: "paginate" %>
                </div>
 		  </div>
 
   <!-- 閲覧数ランキング一覧表示 -->
 		  <div id="tab2" class="tab">
-            <%  if @skate_practice_browse_ranks.present?  %>
+            <%  if browse_rank.present?  %>
              <div class="container-fluid">
-			  <% @skate_practice_browse_ranks.each do |practice| %>
+			  <% browse_rank.each do |practice| %>
 				 <%= link_to article_path(practice.id) do %>
 					<div class="row article-box ">
 						<div class="col-md-5 skate-image">
@@ -46,7 +46,7 @@
 			  <% end %>
 			</div>
 			  	<div class="paginate">
-                  <%= paginate @skate_practice_browse_ranks, class: "paginate" %>
+                  <%= paginate browse_rank, class: "paginate" %>
                </div>
 
         <% else %>
