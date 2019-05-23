@@ -1,34 +1,8 @@
 <div class="container">
   <h1 class="favorites-title">Browsing Histroy</h1>
 
-<% if @browsing_histories.present? %>
-  <div class="col-lg-10 col-lg-offset-1">
-    <table class="table">
-      	<thead>
-      		<th></th>
-      		<th>Title</th>
-      		<th>Genre</th>
-      		<th>Post Date</th>
-      		<th></th>
-      	</thead>
+<%= render partial: "user_article", locals: { article: @browsing_histories, user: @user }  %>
 
-           <% @browsing_histories.each do |h| %>
-      	<thead>
-      		<th><%= attachment_image_tag h.article.article_images.last, :image, :size=>"200x150" %></th>
-      		<th><%= h.article.article_title %></th>
-      		<th><%= h.article.genre %></th>
-      		<th><%= h.article.created_at.strftime("%Y.%m.%d") %></th>
-      		<th><%= link_to "Detail", article_path(h.article_id), :class => 'cp_btn', :style=>"color:black;" %></th>
-      	</thead>
-          <% end %>
-　　　</table>
-　　　   <div class="user-admin-index-paginate">
-          <%= paginate(@browsing_histories, :theme => '../kaminari') %>
-        </div>
- <% else %>
-   <h1 class="favorites-message-none">閲覧した記事がありません</h1>
-   <% end %>
-　</div>
 </div>
 
 
