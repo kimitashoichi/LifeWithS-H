@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def histroy
     @user = User.find(params[:id])
-    if @browsing_histories = @user.browsing_histories.present?
+    if @user.browsing_histories.present?
       @browsing_histories = @user.browsing_histories.order(id: :desc).page(params[:page]).per(PER).reverse_order
     end
   end
