@@ -2,61 +2,7 @@
   <div class="skate-title-box">
     <h1 class="skate-title">HipHop</h1>
   </div>
-  <div class="wrap">
-  	 	<ul id="tab-menu" class="clearfix">
-  	 		<li><a href="#tab1" class="active">新着一覧</a></li>
-  	 		<li><a href="#tab2" class="">急上昇</a></li>
-  	 	</ul>
 
-	 <div id="tab-contents" class="clearfix">
-	 <!--新着記事一覧表示  -->
-		  <div id="tab1" class="tab">
-		  	<div class="container-fluid">
-			  <% @hiphop_articles.each do |hiphop| %>
-				 <%= link_to article_path(hiphop.id) do %>
-					<div class="row article-box ">
-						<div class="col-md-5 skate-image">
-						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"200x200" %>
-						</div>
-						<div class="col-md-7 skate-article-box">
-						  <h3 class="skate-article-title"><%= hiphop.article_title %></h3>
-						  <p class="skate-article-created"><%=hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
-						</div>
-					</div>
-				 <% end %>
-			  <% end %>
-			</div>
-			    <div class="paginate">
-                  <%= paginate @hiphop_articles, class: "paginate" %>
-               </div>
-		  </div>
+<%= render partial: "article_body", locals: { article: @hiphop_articles, browse_rank: @hiphop_browse_ranks }  %>
 
-  <!-- 閲覧数ランキング一覧表示 -->
-		  <div id="tab2" class="tab">
-            <%  if @hiphop_browse_ranks.present?  %>
-             <div class="container-fluid">
-			  <% @hiphop_browse_ranks.each do |hiphop| %>
-				 <%= link_to article_path(hiphop.id) do %>
-					<div class="row article-box ">
-						<div class="col-md-5 skate-image">
-						  <%= attachment_image_tag hiphop.article_images.last, :image, :size=>"200x200" %>
-						</div>
-						<div class="col-md-7 skate-article-box">
-						  <h3 class="skate-article-title"><%= hiphop.article_title %></h3>
-						  <p class="skate-article-created"><%= hiphop.created_at.strftime("%Y.%m.%d. %H:%M") %></p>
-						</div>
-					</div>
-				 <% end %>
-			  <% end %>
-			</div>
-			  	<div class="paginate">
-                  <%= paginate @hiphop_browse_ranks, class: "paginate" %>
-               </div>
-
-        <% else %>
-           <h1 class="article-none-message">急上昇記事はまだありません</h1>
-	        <% end %>
-		  </div>
-     </div>
-  </div>
 </div>

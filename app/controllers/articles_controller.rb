@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
       new_history = BrowsingHistory.new
       new_history.user_id = current_user.id
       new_history.article_id = params[:id]
+      new_history.history_genre = Article.find(params[:id]).genre
       # 同じページを見た際に重複したものは削除
       if current_user.browsing_histories.exists?(article_id: "#{params[:id]}")
         old_history = current_user.browsing_histories.find_by(article_id: "#{params[:id]}")
@@ -46,24 +47,27 @@ class ArticlesController < ApplicationController
   # 一覧表示の際に閲覧履歴の多い順で表示するための記述
   def skate
     @skate_articles = Article.where(genre: 'Skate').order(id: :desc).page(params[:page]).per(PER).reverse_order
-    if BrowsingHistory.present?
-      @skate_browse_ranks = @skate_articles.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
+    if BrowsingHistory.where(history_genre: 'Skate').present?
+      skate_browse = BrowsingHistory.where(history_genre: 'Skate')
+      @skate_browse_ranks = Article.find(skate_browse.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(20).pluck(:article_id))
       @skate_browse_ranks = Kaminari.paginate_array(@skate_browse_ranks).page(params[:page]).per(PER)
     end
   end
 
   def skate_practice
     @skate_practices = Article.where(genre: 'Practice').order(id: :desc).page(params[:page]).per(PER).reverse_order
-    if BrowsingHistory.present?
-      @skate_practice_browse_ranks = @skate_practices.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
-      @skate_practice_browse_ranks = Kaminari.paginate_array(skate_practice_browse_ranks).page(params[:page]).per(PER)
+    if BrowsingHistory.where(history_genre: 'Practice').present?
+      skate_practice_browse = BrowsingHistory.where(history_genre: 'Practice')
+      @skate_practice_browse_ranks = Article.find(skate_practice_browse.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(20).pluck(:article_id))
+      @skate_practice_browse_ranks = Kaminari.paginate_array(@skate_practice_browse_ranks).page(params[:page]).per(PER)
     end
   end
 
   def hiphop
     @hiphop_articles = Article.where(genre: 'HipHop').order(id: :desc).page(params[:page]).per(PER).reverse_order
-    if BrowsingHistory.present?
-      @hiphop_browse_ranks = @hiphop_articles.find(BrowsingHistory.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(30).pluck(:article_id))
+    if BrowsingHistory.where(history_genre: 'HipHop').present?
+      hiphop_browse = BrowsingHistory.where(history_genre: 'HipHop')
+      @hiphop_browse_ranks = Article.find(hiphop_browse.group(:article_id).order(Arel.sql('count(article_id) desc')).limit(20).pluck(:article_id))
       @hiphop_browse_ranks = Kaminari.paginate_array(@hiphop_browse_ranks).page(params[:page]).per(PER)
     end
   end
@@ -72,18 +76,20 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
-    if @article.save && @article.genre == 'Practice'
+    unless @article.save
+      flash.now[:danger] = "記事の投稿に失敗しました"
+      render :new
+    end
+
+    if @article.genre == 'Practice'
       redirect_to skate_practice_articles_path, success: "記事を投稿しました"
     end
 
-    if @article.save! && @article.genre == 'Skate'
+    if @article.genre == 'Skate'
       redirect_to skate_articles_path, success: "記事を投稿しました"
-    elsif @article.save! && @article.genre == 'HipHop'
+  else @article.genre == 'HipHop'
       redirect_to hiphop_articles_path, success: "記事を投稿しました"
-    else
-      flash.now[:danger] = "記事の投稿に失敗しました"
-      render :new
-   end
+    end
   end
 
   def destroy
