@@ -58,8 +58,7 @@ RSpec.describe UsersController, type: :controller do
     describe "管理者権限を使用してページを表示できているかどうか" do
       context "管理者のみアクセスできるページ" do
         before do
-          user = create(:user)
-          current_user = create(:admin)
+          user = create(:admin)
           sign_in user
           get :index, params: { id: user.id }
         end
