@@ -122,10 +122,24 @@ RSpec.describe ContactsController, type: :controller do
           contact = create(:contact)
           get :show, params: { id: another_user.id }
         end
-        it 'ページが正しく表示されているかどうか' do
+        it 'リダイレクトされているかどうか' do
           expect(response.status).to eq 302
         end
       end
+    end
+  end
+
+  describe 'データが投稿できているかどうか' do
+    context '全ての項目を入力した場合' do
+      before do
+        @user = create(:user)
+        sign_in @user
+      end
+    end
+    it 'データは正しく保存される' do
+      expect {
+        post :create, params: { contact: attributes_for(:contact) }
+      }.to change { Contact.count }.by(1)
     end
   end
 end

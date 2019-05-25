@@ -88,23 +88,8 @@ RSpec.describe Comment, type: :model do
         @user.replies.create(reply_text: 'reply_text', comment_id: 1, user_id: 1)
       end
       it '返信も同時に削除される' do
-        expect{ @comment.destroy }.to change{ Reply.count }.by(-1)
+        expect { @comment.destroy }.to change { Reply.count }.by(-1)
       end
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
