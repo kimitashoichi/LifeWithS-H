@@ -69,14 +69,61 @@ RSpec.describe User, type: :model do
         expect(FactoryBot.build(:user, password: 'another_password').save).to be_falsey
       end
     end
+  end
 
-    # context 'パスワードが暗号化されているか' do
-    #   before do
-    #     @user = create(:user)
-    #   end
-    #   it 'パスワードが暗号化されているか' do
-    #     expect(@user.password_digest).to_not eq "password"
-    #   end
-    # end
+  describe 'ユーザーモデルのアソシエーション' do
+    context 'ユーザーが削除された場合' do
+      before do
+        @user = create(:user)
+        @article = create(:article)
+        @user.comments.create(comment_text: 'comment_text', article_id: 1, user_id: 1 )
+      end
+      it 'コメントも同時に削除される' do
+        expect{ @user.destroy }.to change{ Comment.count }.by(-1)
+      end
+
+      it '返信も同時に削除される' do
+        @user.replies.create(reply_text: 'reply_text', comment_id: 1, user_id: 1)
+        expect{ @user.destroy }.to change{ Reply.count }.by(-1)
+      end
+
+      it 'お問い合わせも同時に削除される' do
+        @user.contacts.create(contact_title: 'contact_title',
+                              contact_text: 'comment_text_text',
+                              contact_email: 'comment_email@test.com',
+                              contact_name: 'test_user',
+                              user_id: 1 )
+        expect{ @user.destroy }.to change{ Contact.count }.by(-1)
+      end
+
+      it '閲覧履歴も同時に削除される' do
+        @user.browsing_histories.create(user_id: 1, article_id: 1, history_genre: 'Skate')
+        expect{ @user.destroy }.to change{ BrowsingHistory.count }.by(-1)
+      end
+
+      it 'お気に入りも同時に削除される' do
+        @user.favorites.create(user_id: 1, article_id: 1)
+        expect{ @user.destroy }.to change{ Favorite.count }.by(-1)
+      end
+    end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
