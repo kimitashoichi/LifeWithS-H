@@ -156,43 +156,23 @@ RSpec.describe Article, type: :model do
       end
       it 'お気に入りも同時に削除される' do
         @user.favorites.create(user_id: 1, article_id: 1)
-        expect{ @article.destroy }.to change{ Favorite.count }.by(-1)
+        expect { @article.destroy }.to change { Favorite.count }.by(-1)
       end
 
       it 'コメントも同時に削除される' do
-        @user.comments.create(comment_text: 'comment_text', article_id: 1, user_id: 1 )
-        expect{ @article.destroy }.to change{ Comment.count }.by(-1)
+        @user.comments.create(comment_text: 'comment_text', article_id: 1, user_id: 1)
+        expect { @article.destroy }.to change { Comment.count }.by(-1)
       end
 
       it '画像も同時に削除される' do
         @article.article_images.create(article_id: 1, image_id: '7af73dd7e1f06c92b83a')
-        expect{ @article.destroy }.to change{ ArticleImage.count }.by(-1)
+        expect { @article.destroy }.to change { ArticleImage.count }.by(-1)
       end
 
       it '閲覧履歴も同時に削除される' do
         @user.browsing_histories.create(user_id: 1, article_id: 1, history_genre: 'Skate')
-        expect{ @article.destroy }.to change{ BrowsingHistory.count }.by(-1)
+        expect { @article.destroy }.to change { BrowsingHistory.count }.by(-1)
       end
     end
   end
-
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
