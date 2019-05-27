@@ -20,7 +20,7 @@
               <span class="name-style"><%= r.user.last_name %>さん</span><span class="mrg-20"></span>
               <%= r.reply_text %><span class="mrg-20"></span>
       	     <% if comment.user == current_user %>
-               <%= link_to '削除', article_comment_responses_path(comment.article_id, comment.id), method: :delete, remote: true  %></p>
+               <%= link_to '削除', article_comment_response_path(comment.article_id, comment.id, r.id), method: :delete, remote: true  %></p>
       	     <% end %>
            <% end %>
             <%= render partial: 'comments/reply', locals: { reply: @reply, comment: comment } %>

@@ -14,7 +14,7 @@ class ResponsesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:article_id])
-    @reply = Reply.find_by(params[:article_id])
+    @reply = Reply.find(params[:id])
     if @reply.destroy
       render :index
     end

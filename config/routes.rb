@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:new, :show, :create, :destroy, :update, :edit] do
     resources :comments, only: [:create, :destroy] do
-      resource :responses, only: [:create, :destroy]
+      resources :responses, only: [:create, :destroy]
     end
     resource :favorites, only: [:create, :destroy]
     collection do
