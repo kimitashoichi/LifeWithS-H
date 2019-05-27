@@ -142,4 +142,32 @@ RSpec.describe ContactsController, type: :controller do
       }.to change { Contact.count }.by(1)
     end
   end
+
+  describe 'データが削除できるかどうか' do
+    context 'destroyアクションが呼ばれた時' do
+      before do
+        @user = create(:user)
+        sign_in @user
+        @contact = create(:contact)
+      end
+      it 'データが削除される' do
+        expect {
+          delete :destroy, params: { id: @user.id }
+        }.to change { Contact.count }.by(-1)
+      end
+    end
+
+    context '管理者の場合' do
+      before do
+        @user = create(:admin)
+        sign_in @user
+        @contact = create(:contact)
+      end
+      it 'データが削除される' do
+        expect {
+          delete :destroy, params: { id: @user.id }
+        }.to change { Contact.count }.by(-1)
+      end
+    end
+  end
 end
