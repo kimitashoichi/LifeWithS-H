@@ -3,7 +3,7 @@ FactoryBot.define do
     contact_title { "contact_title_test" }
     contact_text { "contact_text_test" }
     contact_email { "contact_email_test" }
-    user_id { 9999999 }
+    user_id { 2 }
     contact_name { "contact_name_test" }
   end
 
