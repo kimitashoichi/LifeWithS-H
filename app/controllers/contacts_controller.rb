@@ -1,6 +1,8 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :user_contact_list, :destroy]
-  before_action :confirm_user, only: [:index, :user_contact_list, :destroy, :show]
+  before_action :confirm_user, only: [:user_contact_list, :destroy, :show]
+  before_action :confim_admin, only: [:index]
+
   def index
     @contacts = Contact.all.order(id: :desc)
   end
@@ -53,6 +55,13 @@ class ContactsController < ApplicationController
       if user.id != current_user.id
         redirect_to home_path, danger: "許可されていないアクションです"
       end
+    end
+  end
+
+    # ID無しのページの前に行われるアクション
+  def confim_admin
+    if current_user.admin != true
+      redirect_to home_path, danger: "許可されていないアクションです"
     end
   end
 
