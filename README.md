@@ -32,11 +32,11 @@
 * 使用したgem  
 ・devise  
 ・pry-rails  
-・paranoia, "~> 2.0"  
+・paranoia  
 ・kaminari  
 ・refile  
 ・refile-mini_magick  
-・bootstrap-sass, "~> 3.3.6"  
+・bootstrap-sass  
 ・jquery-rails  
 ・devise-i18n  
 ・devise-i18n-views  
@@ -47,4 +47,4 @@
 ・rails-controller-testing  
 ・json  
 ・mysql2  
-・listen, ">= 3.0.5", "< 3.2"
+・listen
