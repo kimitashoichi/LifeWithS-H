@@ -15,10 +15,10 @@
 ・'ストリートカルチャー'という共通点を持つヒップホップも合わせて知って欲しい
 
 * 環境について  
-・Ruby '2.5.3'  
+・Ruby '2.3.8'  
 ・Rails '5.2.3'
 
-* 使用した技術  
+* 取り入れた技術  
 ・記事、画像の投稿、編集、削除機能  
 ・Ajaxを使用したコメント投稿、削除機能  
 ・gsubメソッドを使用したYouTube動画の投稿  
@@ -32,11 +32,11 @@
 * 使用したgem  
 ・devise  
 ・pry-rails  
-・paranoia  
+・paranoia, "~> 2.0"  
 ・kaminari  
 ・refile  
 ・refile-mini_magick  
-・bootstrap-sass  
+・bootstrap-sass, "~> 3.3.6"  
 ・jquery-rails  
 ・devise-i18n  
 ・devise-i18n-views  
@@ -44,4 +44,7 @@
 ・factory_bot_rails  
 ・rspec-rails  
 ・rubocop  
-・rails-controller-testing
+・rails-controller-testing  
+・json  
+・mysql2  
+・listen, ">= 3.0.5", "< 3.2"
