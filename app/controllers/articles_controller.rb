@@ -77,18 +77,15 @@ class ArticlesController < ApplicationController
     @article.movie_url = params[:article][:movie_url].gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
     unless @article.save
-      flash.now[:danger] = "記事の投稿に失敗しました"
-      render :new
-    end
-
-    if @article.genre == 'Practice'
-      redirect_to skate_practice_articles_path, success: "記事を投稿しました"
+      redirect_to new_article_path, danger: "記事の投稿に失敗しました"
     end
 
     if @article.genre == 'Skate'
       redirect_to skate_articles_path, success: "記事を投稿しました"
-    else @article.genre == 'HipHop'
-         redirect_to hiphop_articles_path, success: "記事を投稿しました"
+    elsif @article.genre == 'HipHop'
+      redirect_to hiphop_articles_path,  success: "記事を投稿しました"
+    else
+      redirect_to skate_practice_articles_path, success: "記事を投稿しました"
     end
   end
 
@@ -104,9 +101,11 @@ class ArticlesController < ApplicationController
     article.update(article_params)
 
     if article.genre == 'Skate'
-      redirect_to skate_articles_path, success: "記事を投稿完了しました"
+      redirect_to skate_articles_path, success: "記事を編集しました"
+    elsif article.genre == 'HipHop'
+      redirect_to hiphop_articles_path, success: "記事を編集しました"
     else
-      redirect_to hiphop_articles_path, success: "記事を投稿完了しました"
+      redirect_to skate_practice_articles_path, success: "記事を編集しました"
     end
   end
 

@@ -5,44 +5,46 @@
 
 
    <div class="form-horizontal">
-       <%= f.label :movie_url %>
+      <%= f.label :movie_url %>
       <div class="form-group">
-  	   <%= f.text_field :movie_url, size: "50x10" %>
+  	    <%= f.text_field :movie_url, size: "50x10" %>
       </div>
        <%= f.label :article_title %>
       <div class="form-group">
-  	   <%= f.text_field :article_title, size: "50x10" %>
+  	    <%= f.text_field :article_title, size: "50x10" %>
       </div>
        <%= f.label :article_text %>
       <div class="form-group">
-  	   <%= f.text_area :article_text, size: "100x15" %>
+  	    <%= f.text_area :article_text, size: "100x15" %>
       </div>
        <%= f.label :link_name %>
       <div class="form-group">
-       <%= f.text_field :link_name, size: "50x10" %>
+        <%= f.text_field :link_name, size: "50x10" %>
       </div>
        <%= f.label :article_url %>
       <div class="form-group">
-  	   <%= f.text_field :article_url, size: "50x10" %>
+  	    <%= f.text_field :article_url, size: "50x10" %>
       </div>
        <%= f.label :article_images_images %>
-    <p id='add-image'>
-      <%= f.attachment_field :article_images_images, multiple:true %></p>
+
+        <p id='add-image'>
+          <%= f.attachment_field :article_images_images, multiple:true %>
+        </p>
 
 
-   <div class="add-image-form"></div>
-     <button type="button" class="btn btn-primary active">
-        <div class='add-image-buton'>画像を追加する</div>
-     </button>
+     <div class="add-image-form"></div>
+       <button type="button" class="btn btn-primary active">
+         <div class='add-image-buton'>画像を追加する</div>
+       </button>
 
-     <button type="button" class="btn btn-danger active">
-        <div class='delete-image-buton'>フォームを削除する</div>
-     </button>
+       <button type="button" class="btn btn-danger active">
+         <div class='delete-image-buton'>フォームを削除する</div>
+       </button>
 
-     <div class="form-group-submit">
-     <p><%= f.submit 'Create!', :class =>"cp_btn" %></p>
-    </div>
+      <div class="form-group-submit">
+       <%= f.submit 'Create!' %>
+      </div>
+   </div>
 <% end %>
 
-</div>
 
