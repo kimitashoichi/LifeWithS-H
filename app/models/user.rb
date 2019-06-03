@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy
   has_many :browsing_histories, dependent: :destroy
-
   validates :last_name, presence: true
   validates :first_name, presence: true
 

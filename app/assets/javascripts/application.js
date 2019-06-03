@@ -69,6 +69,16 @@ $(function () {
 
   $('.flash-message-box').fadeOut(2300);
 
+　 $("#input-text").on("keyup", function() {
+   let countNum = String($(this).val().length);
+   $("#counter").text(countNum + "文字");
+ });
+
+　 $(".input-text-area").on("keyup", function() {
+   let countNum = String($(this).val().length);
+   $(".text-counter").text(countNum + "文字");
+ });
+
 });
 
 
