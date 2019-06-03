@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   validates :article_title, length: { minimum: 10 }
   validates :article_title, length: { maximum: 35 }
   validates :article_text, length: { minimum: 50 }
-  validates :article_text, length: { maximum: 700 }
+  validates :article_text, length: { maximum: 2000 }
   validates :genre, presence: true
   validates :link_name, presence: true
   validates :movie_url, presence: true

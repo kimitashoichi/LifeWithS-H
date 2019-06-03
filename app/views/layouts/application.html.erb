@@ -20,7 +20,7 @@
                <li class="nav-list-item-search form-inline">
                  <%= form_tag(article_index_articles_path, method: :get) do %>
                   <%= text_field_tag :search,"", :class=>"form-control" %>
-                  <%= submit_tag 'GO', :class =>"btn btn-default btn-sm" %>
+                  <%= submit_tag 'GO', :class =>"btn btn-default btn-sm", :name => nil %>
                  <% end %>
                </li>
 

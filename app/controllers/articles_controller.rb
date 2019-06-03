@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
     if @article.genre == 'Skate'
       redirect_to skate_articles_path, success: "記事を投稿しました"
     elsif @article.genre == 'HipHop'
-      redirect_to hiphop_articles_path,  success: "記事を投稿しました"
+      redirect_to hiphop_articles_path, success: "記事を投稿しました"
     else
       redirect_to skate_practice_articles_path, success: "記事を投稿しました"
     end

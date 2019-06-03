@@ -11,11 +11,15 @@
       </div>
        <%= f.label :article_title %>
       <div class="form-group">
-  	    <%= f.text_field :article_title, size: "50x10" %>
+        <p id="counter">0文字</p>
+        <p>(10〜35文字）</p>
+  	    <%= f.text_field :article_title, size: "50x10", id: "input-text" %>
       </div>
        <%= f.label :article_text %>
       <div class="form-group">
-  	    <%= f.text_area :article_text, size: "100x15" %>
+        <p class="text-counter">0文字</p>
+        <p>(50〜2000文字）</p>
+  	    <%= f.text_area :article_text, size: "100x15", :class => "input-text-area" %>
       </div>
        <%= f.label :link_name %>
       <div class="form-group">
